@@ -1,6 +1,3 @@
-def print_hi(name):
-    print(f'Hi, {name}')
+import tsplib95
 
-
-if __name__ == '__main__':
-    print_hi('PyCharm')
+tsp = tsplib95.load('../Data/gr120.tsp')
