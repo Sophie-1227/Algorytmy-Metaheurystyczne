@@ -1,5 +1,10 @@
 import tsplib95
 
-tsp = tsplib95.load('../Data/gr120.tsp')
+if __name__ == '__main__':
+    problem = tsplib95.load('../Data/bays29/bays29.tsp')
+    opt = tsplib95.load('../Data/bays29/bays29.opt.tour')
 
-print(type(tsp))
+    #problem.tours = opt.tours
+    print(problem)
+    #print(opt.tours)
+    #print(problem.trace_tours(problem.tours))
