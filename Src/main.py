@@ -22,7 +22,6 @@ if __name__ == '__main__':
     #zapisuje caly obiekt
     problem = tsplib95.load('../Data/bays29/bays29.tsp')
 
-    s
     #wypisanie macierzy
     print(problem.edge_weights)
 
