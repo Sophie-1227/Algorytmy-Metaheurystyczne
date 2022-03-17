@@ -11,5 +11,6 @@ for i in range (k):
     random_solve(problem)
     if current > sum(problem):
         current = sum(problem)
+        table = random_solve(problem)
 
-print(current)
+print(table)
