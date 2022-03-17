@@ -25,6 +25,7 @@ for i<-0 to 29 do
         point = j #punkt, uznany za najlepszy
     list.push(point)
     odleglosc += best
+    odleglosc += matrix[j][s]
 print(odleglosc)
 print(list)     
 """
