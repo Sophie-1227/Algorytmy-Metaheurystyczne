@@ -23,10 +23,10 @@ if __name__ == '__main__':
     problem = tsplib95.load('../Data/bays29/bays29.tsp')
 
     #wypisanie macierzy
-    print(problem.edge_weights)
+    #print(problem.edge_weights)
 
     #wypisywanie permutacji drogi
-    random_solve(problem)
+    #random_solve(problem)
 
     #wypisywanie funkcji celu
     #ogarnac czy trace_tours zadziala
