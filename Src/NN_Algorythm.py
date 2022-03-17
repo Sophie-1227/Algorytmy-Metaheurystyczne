@@ -8,7 +8,7 @@ Opisowo:
 4. I Powtarzamy punkty 2 i 3
 5. Wykreślamy poprzedni punkt z dostępnych do losowania
 6. Kiedy zostaną nam ostatnie 2 punkty To ta trasa musi być do punktu początkowego, dodajemy odległość, ale punkty do pi juz nie musimy
-7. Wyświetlamy
+7. Wyświetlamy i się cieszymy jak działa
 """
 
 def NN_algo():
