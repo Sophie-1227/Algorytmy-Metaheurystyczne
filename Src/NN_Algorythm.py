@@ -11,5 +11,23 @@ Opisowo:
 7. Wyświetlamy i się cieszymy jak działa
 """
 
+"""
+Pseudokod:
+s = random od 1 do 29 # punkt startowy
+list.push(s)
+odleglosc = 0
+for i<-0 to 29 do
+    best = 8364273 #duża odległość, żeby nie było problemu
+    for j<-0 to 29 do
+        temp = matrix[i][j]
+        if temp<best && j nie należy do list
+        best = temp
+        point = j #punkt, uznany za najlepszy
+    list.push(point)
+    odleglosc += best
+print(odleglosc)
+print(list)     
+"""
+
 def NN_algo():
     starting = random.randint(1,29)
