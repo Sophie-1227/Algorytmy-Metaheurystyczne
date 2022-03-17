@@ -27,6 +27,7 @@ for i<-0 to 29 do
     odleglosc += best
 print(odleglosc)
 print(list)     
+
 """
 
 def NN_algo():
