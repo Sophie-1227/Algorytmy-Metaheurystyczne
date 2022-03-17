@@ -2,14 +2,14 @@ import numpy as np
 import tsplib95
 
 def sum(problem):
-     res = []
-     for tour in problem.tours:
-         cost = 0
-         for i in range(len(0, len(tour)-1)):
-             cost += problem.get_weight(tour[i], tour[i+1])
-         cost += problem.get_weight(tour[-1],tour[0])
-         res.append(cost)
-     return res
+    res = []
+    for tour in problem.tours:
+        cost = 0
+        for i in range(0, len(tour)-1):
+            cost += problem.get_weight(tour[i], tour[i+1])
+        cost += problem.get_weight(tour[-1],tour[0])
+        res.append(cost)
+    return res
 
 
 def random_solve(problem):
