@@ -14,10 +14,10 @@ def evaluate(problem):
         #res.append(cost)
     return cost
 
-
+#tworzy permutacje trasy
 def random_solve(problem):
-    nodes = np.array(list(problem.get_nodes()))  # lista od 1 do ilosci wierzcholkow
-    np.random.shuffle(nodes[1:-1])  # shufflowanie
+    nodes = np.array(list(problem.get_nodes()))  #lista od 1 do ilosci wierzcholkow
+    np.random.shuffle(nodes[1:-1])  #shufflowanie listy
     problem.tours.append(nodes.tolist())
     #print(problem.tours)
 
@@ -31,12 +31,11 @@ if __name__ == '__main__':
     #wypisywanie permutacji drogi
     #random_solve(problem)
 
-    #wypisywanie funkcji celu
+    #wypisywanie funkcji celu (ZROBIC)
     #ogarnac czy trace_tours zadziala
-
     #problem.trace_tours([tour])[0]
 
-    #sum problem powinno dzialac ale nie wiem czy dziala xD
-    #sum(problem)
+    #suma wszystkich wag
+    #print(evaluate(problem))
 
     k_method.k_method_solve()
