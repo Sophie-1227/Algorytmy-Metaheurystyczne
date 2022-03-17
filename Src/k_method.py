@@ -12,6 +12,5 @@ def k_method_solve():
         integer = random_solve(problem)
         if current > evaluate(problem):
             current = evaluate(problem)
-            table = integer
-
-    print(table)
+            k_table = integer
+    print(k_table)
