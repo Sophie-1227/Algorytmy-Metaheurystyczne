@@ -10,9 +10,9 @@ def k_method_solve():
     k = 1000
     current = 8397420470283740084749
     for i in range (k):
-        integer = random_solve(problem)
+        temporary = random_solve(problem)
         if current > evaluate(problem):
             current = evaluate(problem)
-            k_table = integer
+            k_table = temporary
     print(k_table)
     # TODO ogarnac zapis do tablicy i wypisywanie
