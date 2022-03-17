@@ -1,6 +1,9 @@
 import numpy as np
 import tsplib95
 
+from Src import k_method
+
+
 def sum(problem):
     res = []
     for tour in problem.tours:
@@ -35,3 +38,5 @@ if __name__ == '__main__':
 
     #sum problem powinno dzialac ale nie wiem czy dziala xD
     #sum(problem)
+
+    k_method.k_method_solve()
