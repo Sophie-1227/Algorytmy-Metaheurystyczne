@@ -1,8 +1,5 @@
-from main import random_solve
 import tsplib95
-
-from main import random_solve
-from main import sum
+from Src.main import random_solve, evaluate
 
 
 def k_method_solve():
@@ -13,8 +10,8 @@ def k_method_solve():
     current = 8397420470283740084749
     for i in range (k):
         integer = random_solve(problem)
-        if current > sum(problem):
-            current = sum(problem)
+        if current > evaluate(problem):
+            current = evaluate(problem)
             table = integer
 
     print(table)

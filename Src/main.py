@@ -4,15 +4,15 @@ import tsplib95
 from Src import k_method
 
 
-def sum(problem):
+def evaluate(problem):
     res = []
     for tour in problem.tours:
         cost = 0
         for i in range(0, len(tour)-1):
             cost += problem.get_weight(tour[i], tour[i+1])
         cost += problem.get_weight(tour[-1],tour[0])
-        res.append(cost)
-    return res
+        #res.append(cost)
+    return cost
 
 
 def random_solve(problem):
