@@ -1,7 +1,7 @@
 import numpy as np
 import tsplib95
 
-from Src import k_method
+from Src.krandom import krandom
 
 
 def evaluate(problem):
@@ -18,7 +18,7 @@ def evaluate(problem):
 def random_solve(problem):
     nodes = np.array(list(problem.get_nodes()))  #lista od 1 do ilosci wierzcholkow
     np.random.shuffle(nodes[1:-1])  #shufflowanie listy
-    problem.tours.append(nodes.tolist())
+    return nodes.tolist()
     #print(problem.tours)
 
 if __name__ == '__main__':
@@ -29,13 +29,16 @@ if __name__ == '__main__':
     #print(problem.edge_weights)
 
     #wypisywanie permutacji drogi
-    #random_solve(problem)
+    tour = random_solve(problem)
 
     #wypisywanie funkcji celu (ZROBIC)
     #ogarnac czy trace_tours zadziala
+    #podaje tablice sciezek
+    #zwraca tablice kosztow
     #problem.trace_tours([tour])[0]
 
     #suma wszystkich wag
     #print(evaluate(problem))
 
-    k_method.k_method_solve()
+    #k_method.k_method_solve(problem,1000)
+    krandom(problem, 1000)
