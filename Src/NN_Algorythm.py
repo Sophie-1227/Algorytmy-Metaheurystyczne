@@ -21,10 +21,10 @@ for i<-0 to 29 do
     for j<-0 to 29 do
         temp = matrix[i][j]
         if temp<best && j nie należy do list
-        best = temp
-        point = j #punkt, uznany za najlepszy
-    list.push(point)
-    odleglosc += best
+            best = temp
+            point = j #punkt, uznany za najlepszy
+        list.push(point)
+        odleglosc += best
     odleglosc += matrix[j][s]
 print(odleglosc)
 print(list)     
@@ -32,3 +32,22 @@ print(list)
 
 def NN_algo():
     starting = random.randint(1,29)
+    endList = []
+    odleglosc = 0
+    endList.append(starting)
+    for i in range (29):
+        best = 927638108236
+        for j in range (29):
+            temp = matrix[i][j] #nie mam pojęcia jak wejsc do tego matrixa, bo potrzebuje wyciagnac konkretna wartosc odleglosci
+            if temp<best and j not in endList:
+                best = temp
+                point = j
+        endList.append(point)
+        odleglosc += best
+    odleglosc += matrix[point][starting]
+print(odleglosc)
+print(endList)
+
+
+
+
