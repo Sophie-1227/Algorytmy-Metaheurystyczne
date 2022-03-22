@@ -12,19 +12,28 @@ Opisowo:
 
 """
 Pseudokod:
-s = random od 1 do 29 # punkt startowy
-list.push(s)
-odleglosc = 0
-for i<-0 to 29 do
-    best = 8364273 #duża odległość, żeby nie było problemu
-    for j<-0 to 29 do
-        temp = matrix[i][j]
-        if temp<best && j nie należy do list
-            best = temp
-            point = j #punkt, uznany za najlepszy
-        list.push(point)
-        odleglosc += best
-    odleglosc += matrix[j][s]
-print(odleglosc)
-print(list)     
+
+endResult = 938392818236392   
+endList = []
+for i in range (29):
+    s = i # punkt startowy
+    list.push(s)
+    odleglosc = 0
+    for i<-0 to 29 do
+        best = 8364273 #duża odległość, żeby nie było problemu
+        for j<-0 to 29 do
+            temp = matrix[i][j]
+            if temp<best && j nie należy do list
+                best = temp
+                point = j #punkt, uznany za najlepszy
+            list.push(point)
+            odleglosc += best
+        odleglosc += matrix[j][s]
+    if best<endResult
+        endResult = best
+        endList = list #przypisanie listy najlepszej do listy koncowej (zamieniamy wszystkie wartosci listy)
+    print(endResult)
+    print(endlist)
+    
+
 """
