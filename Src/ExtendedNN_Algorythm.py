@@ -39,15 +39,15 @@ for i in range (29):
 
 """
 
-def NN_algo(problem):
-    starting = rand.randint(1,29)
+def ENN_algo(problem):
     dimension = problem.dimension
     endList = []
     odleglosc = 0
-    point = starting
-    endList.append(starting)
+
     endResult = 927638108236
     for k in range(1, dimension):
+        point = k
+        list.append(point)
         for i in range (1,dimension):
             best = 927638108236
             for j in range (1,30):
@@ -56,11 +56,14 @@ def NN_algo(problem):
                 if temp < best and j not in endList:
                     best = temp
                     point = j
-            endList.append(point)
+            list.append(point)
             #print("przed ", best, "iteracja ", i)
             odleglosc += best
             #print("odleglosc 1 ", odleglosc)
-        odleglosc += problem.get_weight(*(point, starting))
+        odleglosc += problem.get_weight(*(point, k))
+        if odleglosc < endResult:
+            endResult = odleglosc
+            endList = list  # przypisanie listy najlepszej do listy koncowej (zamieniamy wszystkie wartosci listy)
 
-    print(odleglosc)
+    print(endResult)
     print(endList)
