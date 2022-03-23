@@ -1,6 +1,7 @@
 import numpy as np
 import tsplib95
 
+from Src.ExtendedNN_Algorythm import ENN_algo
 from Src.NN_Algorythm import NN_algo
 from Src.krandom import krandom
 
@@ -45,4 +46,6 @@ if __name__ == '__main__':
     #krandom(problem, 1000)
 
 
-    NN_algo(problem)
+    #NN_algo(problem)
+
+    ENN_algo(problem)
