@@ -1,6 +1,5 @@
 import numpy as np
 
-
 #lepsza metoda tego na dole
 def krandom(problem, k):
     if k < 1:
@@ -15,9 +14,11 @@ def krandom(problem, k):
         if cost > curCost:
             cost = curCost
             tour = curTour
-
     problem.tours.append(tour)
     print(tour)
+    print(cost)
+
+
 """
 #implementacja algorytmu k-random
 def k_method_solve(problem, k):

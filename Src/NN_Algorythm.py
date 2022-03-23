@@ -1,5 +1,5 @@
 #Algorytm najblizszego sasiada
-from random import random
+import random as rand
 """
 Opisowo:
 1. Losujemy punkt rozpoczęcie trasy (możemy też go wybrać na twardo i też będzie dobrze) i dodajemy go na początek listy pi (listy kolejnych odwiedzanych punktów.
@@ -30,24 +30,28 @@ print(odleglosc)
 print(list)     
 """
 
-def NN_algo():
-    starting = random.randint(1,29)
+def NN_algo(problem):
+    starting = rand.randint(1,29)
+    dimension = problem.dimension
     endList = []
+        #list(range(1, dimension + 1))
     odleglosc = 0
+    point = starting
     endList.append(starting)
-    for i in range (29):
+
+    for i in range (1,dimension):
         best = 927638108236
-        for j in range (29):
-            temp = matrix[i][j] #nie mam pojęcia jak wejsc do tego matrixa, bo potrzebuje wyciagnac konkretna wartosc odleglosci
-            if temp<best and j not in endList:
+        for j in range (1,30):
+            #temp = matrix[i][j] #nie mam pojęcia jak wejsc do tego matrixa, bo potrzebuje wyciagnac konkretna wartosc odleglosci
+            temp = problem.get_weight(*(point, j))
+            if temp < best and j not in endList:
                 best = temp
                 point = j
         endList.append(point)
+        #print("przed ", best, "iteracja ", i)
         odleglosc += best
-    odleglosc += matrix[point][starting]
-print(odleglosc)
-print(endList)
+        #print("odleglosc 1 ", odleglosc)
+    odleglosc += problem.get_weight(*(point, starting))
 
-
-
-
+    print(odleglosc)
+    print(endList)

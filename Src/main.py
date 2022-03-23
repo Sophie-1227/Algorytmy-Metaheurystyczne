@@ -1,6 +1,7 @@
 import numpy as np
 import tsplib95
 
+from Src.NN_Algorythm import NN_algo
 from Src.krandom import krandom
 
 
@@ -29,7 +30,7 @@ if __name__ == '__main__':
     #print(problem.edge_weights)
 
     #wypisywanie permutacji drogi
-    tour = random_solve(problem)
+    #tour = random_solve(problem)
 
     #wypisywanie funkcji celu (ZROBIC)
     #ogarnac czy trace_tours zadziala
@@ -41,4 +42,7 @@ if __name__ == '__main__':
     #print(evaluate(problem))
 
     #k_method.k_method_solve(problem,1000)
-    krandom(problem, 1000)
+    #krandom(problem, 1000)
+
+
+    NN_algo(problem)
