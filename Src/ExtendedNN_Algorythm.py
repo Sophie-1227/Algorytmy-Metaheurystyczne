@@ -1,4 +1,5 @@
 #mTak samo jak NNA tylko dodatkowa pętla pozwalająca rozpocząć od każdego z punktów, ale idk czy to legalne
+import random as rand
 """
 Opisowo:
 1. Bierzemy po kolei każdy z punktów na mapie i dodajemy go na początek listy pi (listy kolejnych odwiedzanych punktów).
@@ -37,3 +38,29 @@ for i in range (29):
     
 
 """
+
+def NN_algo(problem):
+    starting = rand.randint(1,29)
+    dimension = problem.dimension
+    endList = []
+    odleglosc = 0
+    point = starting
+    endList.append(starting)
+    endResult = 927638108236
+    for k in range(1, dimension):
+        for i in range (1,dimension):
+            best = 927638108236
+            for j in range (1,30):
+                #temp = matrix[i][j] #nie mam pojęcia jak wejsc do tego matrixa, bo potrzebuje wyciagnac konkretna wartosc odleglosci
+                temp = problem.get_weight(*(point, j))
+                if temp < best and j not in endList:
+                    best = temp
+                    point = j
+            endList.append(point)
+            #print("przed ", best, "iteracja ", i)
+            odleglosc += best
+            #print("odleglosc 1 ", odleglosc)
+        odleglosc += problem.get_weight(*(point, starting))
+
+    print(odleglosc)
+    print(endList)
