@@ -29,7 +29,7 @@ def two_opt(problem):
                 if problem.trace_tours([endList])[0]<problem.trace_tours([tempList])[0]:
                     tempList = endList.copy()
         if problem.trace_tours([curList])[0] == problem.trace_tours([tempList])[0]:
-            return curList
+            return curList, problem.trace_tours([curList])[0]
         curList = tempList.copy()
     print(curList)
     print(problem.trace_tours([curList])[0])
