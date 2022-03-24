@@ -24,7 +24,7 @@ def two_opt(problem):
                 endList = curList.copy()
                 invert(endList, j, i)
 
-                if endList.random_solve()<tempList.random_solve():
+                if problem.trace_tours([endList])[0]<problem.trace_tours([tempList])[0]:
                     tempList = endList.copy()
         if problem.trace_tours([curList])[0] == problem.trace_tours([tempList])[0]:
             return curList
