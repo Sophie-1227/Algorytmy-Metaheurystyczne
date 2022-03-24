@@ -1,6 +1,6 @@
 #from py2opt.routefinder import RouteFinder
 
-def invert(*array: int, i: int, j: int):
+def invert(*array, i, j):
     length = j-i+1
     temp = [length]
 
@@ -26,6 +26,6 @@ def two_opt(problem):
 
                 if endList.random_solve()<tempList.random_solve():
                     tempList = endList.copy()
-        if curList.random_solve() == tempList.random_solve():
+        if problem.trace_tours([curList])[0] == problem.trace_tours([tempList])[0]:
             return curList
         curList = tempList.copy()
