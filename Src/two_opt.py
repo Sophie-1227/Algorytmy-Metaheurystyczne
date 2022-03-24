@@ -1,25 +1,27 @@
 #from py2opt.routefinder import RouteFinder
+import numpy as np
 
-def invert(*array, i, j):
+def invert(array, i, j):
     length = j-i+1
-    temp = [length]
+    temp = []
 
     for k in range (1,length):
-        temp[k] = array[k+i]
+       temp.append(array[k+i-1])
 
     for k in range (1, length):
-        array[i+k] = temp[length-k]
+        array[i+k-1] = temp[length-k-1]
 
 
 def two_opt(problem):
     dimension = problem.dimension
     point = list(range(1,dimension+1))
     curList = list(problem.get_nodes())
+    np.random.shuffle(curList)
     tempList = curList.copy()
     endList = curList.copy()
 
     while True:
-        for i in range(1, dimension):
+        for i in range(1, dimension+1):
             for j in range (1, i+1):
                 endList = curList.copy()
                 invert(endList, j, i)

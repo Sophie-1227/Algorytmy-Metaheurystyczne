@@ -4,6 +4,7 @@ import tsplib95
 from Src.ExtendedNN_Algorythm import ENN_algo
 from Src.NN_Algorythm import NN_algo
 from Src.krandom import krandom
+from Src.two_opt import two_opt
 
 
 def evaluate(problem):
@@ -48,4 +49,6 @@ if __name__ == '__main__':
 
     #NN_algo(problem)
 
-    ENN_algo(problem)
+    #ENN_algo(problem)
+
+    two_opt(problem)
