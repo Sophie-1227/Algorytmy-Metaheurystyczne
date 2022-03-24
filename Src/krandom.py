@@ -17,6 +17,7 @@ def krandom(problem, k):
     problem.tours.append(tour)
     print(tour)
     print(cost)
+    return cost
 
 
 """
