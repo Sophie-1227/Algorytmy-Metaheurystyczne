@@ -1,6 +1,6 @@
 #from py2opt.routefinder import RouteFinder
 
-def invert(array: int[], i: int, j: int):
+def invert(*array: int, i: int, j: int):
     length = j-i+1
     temp = [length]
 
