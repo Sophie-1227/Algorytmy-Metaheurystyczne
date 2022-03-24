@@ -15,8 +15,8 @@ def krandom(problem, k):
             cost = curCost
             tour = curTour
     problem.tours.append(tour)
-    print(tour)
-    print(cost)
+    #print(tour)
+    #print(cost)
     return cost
 
 

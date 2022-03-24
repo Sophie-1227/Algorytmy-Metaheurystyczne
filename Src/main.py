@@ -52,6 +52,6 @@ if __name__ == '__main__':
 
     #ENN_algo(problem)
 
-    print (two_opt(problem))
+    #print(two_opt(problem))
 
     ploting(problem)

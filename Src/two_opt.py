@@ -1,4 +1,3 @@
-#from py2opt.routefinder import RouteFinder
 import numpy as np
 
 def invert(array, i, j):

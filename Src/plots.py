@@ -8,9 +8,9 @@ from Src.krandom import krandom
 def ploting(problem):
     xpoints = []
     ypoints = []
-    for i in range(1,100000):
-        xpoints[i] = krandom(problem, i)
-        ypoints[i] = i
+    for i in range(1,10000, 100):
+        xpoints.append(krandom(problem, i))
+        ypoints.append(i)
 
-    plt.plot(xpoints, ypoints)
+    plt.plot(ypoints, xpoints)
     plt.show()
