@@ -4,7 +4,7 @@ import tsplib95
 from Src.ExtendedNN_Algorythm import ENN_algo
 from Src.NN_Algorythm import NN_algo
 from Src.krandom import krandom
-from Src.plots import ploting
+from Src.kRandomPlot import ploting
 from Src.two_opt import two_opt
 
 
