@@ -13,7 +13,7 @@ def kRandomPlot(problem):
         xpoints.append(i)
 
     plt.plot(xpoints, ypoints)
-    plt.xlabel('Tour length')
-    plt.ylabel('Value of k')
+    plt.xlabel('Value of k')
+    plt.ylabel('Tour length')
     plt.title('K-random method plot')
     plt.show()

@@ -66,3 +66,4 @@ def ENN_algo(problem):
 
     print(endResult)
     print(endList)
+    return endResult, endList
