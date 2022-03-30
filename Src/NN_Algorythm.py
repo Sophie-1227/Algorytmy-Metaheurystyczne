@@ -37,10 +37,11 @@ def NN_algo(problem, k):
         starting = k
     dimension = problem.dimension
     endList = []
-        #list(range(1, dimension + 1))
+    avaibleList = list(problem.get_nodes)
     odleglosc = 0
     point = starting
     endList.append(starting)
+    avaibleList.remove(starting)
 
     for i in range (1,dimension):
         best = 927638108236
@@ -50,10 +51,7 @@ def NN_algo(problem, k):
                 best = temp
                 point = j
         endList.append(point)
-        #p = point
-        #print("przed ", best, "iteracja ", i)
         odleglosc += best
-        #print("odleglosc 1 ", odleglosc)
     odleglosc += problem.get_weight(*(endList[-1], endList[0]))
 
     print(odleglosc)
