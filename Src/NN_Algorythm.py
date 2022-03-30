@@ -1,62 +1,29 @@
-#Algorytm najblizszego sasiada
 import random as rand
+import numpy as np
 
-#THE OLD VERSION OF AN NNA ALGORITHM THAT HAD TROUBLE CHEACKING AND ADDING DISTANCES
-
-"""
-Opisowo:
-1. Losujemy punkt rozpoczęcie trasy (możemy też go wybrać na twardo i też będzie dobrze) i dodajemy go na początek listy pi (listy kolejnych odwiedzanych punktów.
-2. Dla tego punktu szukamy w matrixie najmniejszej odleglości do dowolnego innego punktu (NALEŻY SPRAWDZIĆ CZY WYBRANY PUNKT NIE JEST POCZĄTKOWYM LUB SAMYM SOBĄ)
-3. Dodajemy długość tej trasy do sumarycznej odległości, a numer punkty do listy pi
-4. I Powtarzamy punkty 2 i 3
-5. Wykreślamy poprzedni punkt z dostępnych do losowania
-6. Kiedy zostaną nam ostatnie 2 punkty To ta trasa musi być do punktu początkowego, dodajemy odległość, ale punkty do pi juz nie musimy
-7. Wyświetlamy i się cieszymy jak działa
-"""
-
-"""
-Pseudokod:
-s = random od 1 do 29 # punkt startowy
-list.push(s)
-odleglosc = 0
-for i<-0 to 29 do
-    best = 8364273 #duża odległość, żeby nie było problemu
-    for j<-0 to 29 do
-        temp = matrix[i][j]
-        if temp<best && j nie należy do list
-            best = temp
-            point = j #punkt, uznany za najlepszy
-        list.push(point)
-        odleglosc += best
-    odleglosc += matrix[j][s]
-print(odleglosc)
-print(list)     
-"""
-
-def NN_algo(problem, k):
+def NNA(problem, k):
     if k==0 :
         starting = rand.randint(1,29)
     else:
         starting = k
-    dimension = problem.dimension
+
     endList = []
-    avaibleList = list(problem.get_nodes)
-    odleglosc = 0
-    point = starting
+    avaibleList = list(problem.get_nodes())
+    previouPoint = starting
     endList.append(starting)
     avaibleList.remove(starting)
 
-    for i in range (1,dimension):
-        best = 927638108236
-        for j in range (1,dimension+1):
-            temp = problem.get_weight(*(endList[-1], j))
-            if temp < best and j not in endList and j != 0:
-                best = temp
-                point = j
-        endList.append(point)
-        odleglosc += best
-    odleglosc += problem.get_weight(*(endList[-1], endList[0]))
+    while len(avaibleList) != 0:
+        bestCost = np.inf #przypisujemy infnum do długości trasy, żeby mieć pewność, że każda z podanych jest od niej mniejsza
+        for i in avaibleList:
+            curCost = problem.get_weight(*(endList[-1], i))
 
-    print(odleglosc)
-    print(endList)
-    return odleglosc, endList[0]
+            if bestCost > curCost:
+                bestCost = curCost
+                previouPoint = i
+
+        avaibleList.remove(previouPoint)
+        endList.append(previouPoint)
+
+    problem.tours.append(endList)
+    return endList, problem.trace_tours([endList])[0]

@@ -1,13 +1,14 @@
 import numpy as np
 import tsplib95
 
+from Src.ENNA import ENNA
 from Src.ExtendedNN_Algorythm import ENN_algo
-from Src.NNA import NNA
-from Src.NNAPlot import ploting
-from Src.NN_Algorythm import NN_algo
+from Src.NN_Algorythm import NNA
+from Src.NNAPlot import NNAPlot
+from Src.NN_Algorythm_Old import NN_algo
 from Src.krandom import krandom
 from Src.kRandomPlot import kRandomPlot
-from Src.timePlot import kRandomTimePlot
+from Src.timePlot import kRandomTimePlot, two_optTimePlote
 from Src.two_opt import two_opt
 
 
@@ -60,6 +61,15 @@ if __name__ == '__main__':
     #kRandomPlot(problem)
     #kRandomTimePlot(problem)
 
-    #ploting(problem)
 
-    NNA(problem, 0)
+    #kRandomTimePlot(problem)
+    #print(NNA(problem, 5))
+
+    #ENNA(problem)
+
+    """--- PLOTS ---"""
+    #twoOptTourPlot(problem)
+    #NNAPlot(problem)
+    #kRandomPlot(problem)
+    #kRandomTimePlot(problem)
+    #two_optTimePlote(problem)

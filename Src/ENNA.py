@@ -1,5 +1,5 @@
 #NEW VERSION OF EXTENTED NNA, I HAVE NO IDEA WHEATER ITS LEAGAL OR NOT
-from Src.NNA import NNA
+from Src.NN_Algorythm import NNA
 import numpy as np
 
 

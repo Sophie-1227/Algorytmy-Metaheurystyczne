@@ -8,8 +8,8 @@ from Src.krandom import krandom
 def kRandomPlot(problem):
     xpoints = []
     ypoints = []
-    for i in range(1,10000):
-        ypoints.append( krandom(problem, i))
+    for i in range(1,1000):
+        ypoints.append(krandom(problem, i))
         xpoints.append(i)
 
     plt.plot(xpoints, ypoints)
