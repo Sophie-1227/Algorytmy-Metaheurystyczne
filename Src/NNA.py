@@ -8,7 +8,7 @@ def NNA(problem, k):
         starting = k
 
     endList = []
-    avaibleList = list(problem.get_nodes)
+    avaibleList = list(problem.get_nodes())
     previouPoint = starting
     endList.append(starting)
     avaibleList.remove(starting)
