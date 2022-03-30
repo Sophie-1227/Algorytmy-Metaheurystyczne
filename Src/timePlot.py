@@ -15,13 +15,13 @@ def kRandomTimePlot(problem):
     xpoints = []
     ypoints = []
 
-    for i in range(1, 30):
-    startTime = datetime.now()
-    ypoints.append(krandom(problem, 30000))
-    xpoints.append((datetime.now() - startTime).microseconds)
-    print(ypoints)
+    for i in range(1, 10000):
+        startTime = datetime.now()
+        ypoints.append(krandom(problem, i))
+        xpoints.append((datetime.now() - startTime).microseconds)
+        print(ypoints)
 
-    plt.plot(xpoints, ypoints)
+    plt.plot_dates(xpoints, ypoints)
     plt.xlabel('Time of execusion')
     plt.ylabel('Tour length')
     plt.title('Time comperision between methods')
