@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from Src.NN_Algorythm import NNA
 
 
-# dlugosc trasy w zaleznosci od punktu startowego z wykorzystaniem NN Alg
+# rozne wierzcholki startowe
 def NNAPlot(problem):
     xpoints = []
     ypoints = []

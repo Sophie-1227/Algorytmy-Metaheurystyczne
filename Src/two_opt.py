@@ -11,11 +11,14 @@ def invert(array, i, j):
         array[i+k-1] = temp[length-k-1]
 
 
-def two_opt(problem):
+def two_opt(problem, curList = None):
+    if curList == None:
+        curList = list(problem.get_nodes())
+
     dimension = problem.dimension
     point = list(range(1,dimension+1))
-    curList = list(problem.get_nodes())
-    np.random.shuffle(curList)
+    #curList = list(problem.get_nodes())
+    #np.random.shuffle(curList)
     tempList = curList.copy()
     endList = curList.copy()
 

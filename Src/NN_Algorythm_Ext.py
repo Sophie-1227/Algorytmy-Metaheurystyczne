@@ -11,4 +11,4 @@ def ENNA(problem):
             bestDistance = curDistance
             bestTour = curTour.copy()
 
-    print(bestTour, bestDistance)
+    return bestTour, bestDistance

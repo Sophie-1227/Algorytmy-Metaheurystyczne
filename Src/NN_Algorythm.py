@@ -1,11 +1,14 @@
 import random as rand
 import numpy as np
 
-def NNA(problem, k):
+def NNA(problem, starting = 1):
+    """
     if k==0 :
         starting = rand.randint(1,29)
     else:
         starting = k
+    """
+
 
     endList = []
     avaibleList = list(problem.get_nodes())

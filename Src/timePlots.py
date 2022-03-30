@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import time
 from datetime import datetime
 
 from Src.krandom import krandom
@@ -9,29 +10,32 @@ def kRandomTimePlot(problem):
 
     xpoints = []
     ypoints = []
-    for i in range(1, 1000):
-        startTime = datetime.now()
-        ypoints.append(krandom(problem, i))
-        xpoints.append((datetime.now() - startTime).microseconds)
-        #print(ypoints)
+    for i in range(1, 10):
+        startTime = time.time_ns()
+        krandom(problem, i)
+        totalTime = (time.time_ns() - startTime)
+        ypoints.append(totalTime)
+        xpoints.append(i)
 
-    plt.plot(xpoints, ypoints,'o')
+    plt.plot(xpoints, ypoints)
     plt.xlabel('Time of execusion [microseconds]')
     plt.ylabel('Tour length')
     plt.title('Execution time')
     plt.show()
 
-def two_optTimePlote(problem):
+def two_optTimePlot(problem):
 
     xpoints = []
     ypoints = []
     for i in range(1, 10):
-        startTime = datetime.now()
-        ypoints.append(two_opt(problem))
-        xpoints.append((datetime.now() - startTime).microseconds)
+        startTime = time.time_ns()
+        two_opt(problem)
+        totalTime = (time.time_ns() - startTime)
+        ypoints.append(totalTime)
+        xpoints.append(i)
         #print(ypoints)
 
-    plt.plot(xpoints, ypoints,'o')
+    plt.plot(xpoints, ypoints)
     plt.xlabel('Time of execusion [microseconds]')
     plt.ylabel('Tour length')
     plt.title('Execution time')
