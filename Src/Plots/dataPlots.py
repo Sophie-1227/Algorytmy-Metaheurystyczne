@@ -42,3 +42,5 @@ def twoOptTourPlot(problem):
     plt.show()
 
 
+class NNAPlot:
+    pass
