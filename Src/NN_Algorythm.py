@@ -55,4 +55,4 @@ def NN_algo(problem):
 
     print(odleglosc)
     print(endList)
-    return odleglosc, endList(0)
+    return odleglosc, endList[0]

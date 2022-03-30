@@ -14,27 +14,28 @@ def timePlot(problem):
     ypoints = []
 
     startTime = datetime.now()
-    ypoints.append(krandom(problem, 10000))
+    ypoints.append(krandom(problem, 1000))
     xpoints.append(datetime.now() - startTime)
 
+"""
     startTime = datetime.now()
-    tour, starting = NN_algo()
+    tour, starting = NN_algo(problem)
     ypoints.append(tour)
     xpoints.append(datetime.now() - startTime)
 
     startTime = datetime.now()
-    tour, endList = ENN_algo()
+    tour, endList = ENN_algo(problem)
     ypoints.append(tour)
     xpoints.append(datetime.now() - startTime)
 
     startTime = datetime.now()
-    endList, tour  = two_opt()
+    endList, tour  = two_opt(problem)
     ypoints.append(tour)
     xpoints.append(datetime.now() - startTime)
 
 
 
-
+"""
     plt.plot(xpoints, ypoints)
     plt.xlabel('Time of execusion')
     plt.ylabel('Tour length')
