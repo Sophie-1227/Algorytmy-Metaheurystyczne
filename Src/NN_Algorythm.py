@@ -44,9 +44,9 @@ def NN_algo(problem, k):
 
     for i in range (1,dimension):
         best = 927638108236
-        for j in range (1,30-len(endList)):
+        for j in range (1,dimension-len(endList)):
             temp = problem.get_weight(*(endList[-1], j))
-            if temp < best and j not in endList:
+            if temp < best and j not in endList and j != 0:
                 best = temp
                 point = j
         endList.append(point)
