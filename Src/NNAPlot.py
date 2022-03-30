@@ -9,7 +9,7 @@ def ploting(problem):
     xpoints = []
     ypoints = []
     for i in range(1,30):
-        length, starting = NN_algo(problem)
+        length, starting = NN_algo(problem, i)
         xpoints.append(i)
         ypoints.append(length)
 

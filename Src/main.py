@@ -50,7 +50,7 @@ if __name__ == '__main__':
     #krandom(problem, 1000)
 
 
-    #NN_algo(problem)
+    #NN_algo(problem, 0)
 
     #ENN_algo(problem)
 

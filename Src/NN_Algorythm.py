@@ -30,8 +30,11 @@ print(odleglosc)
 print(list)     
 """
 
-def NN_algo(problem):
-    starting = rand.randint(1,29)
+def NN_algo(problem, k):
+    if k==0 :
+        starting = rand.randint(1,29)
+    else:
+        starting = k
     dimension = problem.dimension
     endList = []
         #list(range(1, dimension + 1))
