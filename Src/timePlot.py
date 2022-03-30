@@ -15,13 +15,13 @@ def kRandomTimePlot(problem):
     xpoints = []
     ypoints = []
 
-    for i in range(1, 10000):
+    for i in range(1, 1000):
         startTime = datetime.now()
         ypoints.append(krandom(problem, i))
         xpoints.append((datetime.now() - startTime).microseconds)
-        print(ypoints)
+        #print(ypoints)
 
-    plt.plot_dates(xpoints, ypoints)
+    plt.plot(xpoints, ypoints)
     plt.xlabel('Time of execusion')
     plt.ylabel('Tour length')
     plt.title('Time comperision between methods')
@@ -29,8 +29,7 @@ def kRandomTimePlot(problem):
 
 
 """
-    
-
+def everyAlgPlot(problem)
 
     startTime = datetime.now()
     tour, starting = NN_algo(problem)
@@ -47,5 +46,3 @@ def kRandomTimePlot(problem):
     ypoints.append(tour)
     xpoints.append((datetime.now() - startTime).total.seconds())
 """
-
-

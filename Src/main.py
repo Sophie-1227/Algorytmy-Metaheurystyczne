@@ -2,6 +2,7 @@ import numpy as np
 import tsplib95
 
 from Src.ExtendedNN_Algorythm import ENN_algo
+from Src.NNAPlot import ploting
 from Src.NN_Algorythm import NN_algo
 from Src.krandom import krandom
 from Src.kRandomPlot import kRandomPlot
@@ -56,4 +57,6 @@ if __name__ == '__main__':
     #print(two_opt(problem))
 
     #kRandomPlot(problem)
-    kRandomTimePlot(problem)
+    #kRandomTimePlot(problem)
+
+    ploting(problem)
