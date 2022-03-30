@@ -32,7 +32,7 @@ def kRandomTimePlot(problem):
 def everyAlgPlot(problem)
 
     startTime = datetime.now()
-    tour, starting = NN_algo(problem)
+    tour, starting = NNA(problem, 0)
     ypoints.append(tour)
     xpoints.append((datetime.now() - startTime).total.seconds())
 

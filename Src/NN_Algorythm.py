@@ -1,5 +1,8 @@
 #Algorytm najblizszego sasiada
 import random as rand
+
+#THE OLD VERSION OF AN NNA ALGORITHM THAT HAD TROUBLE CHEACKING AND ADDING DISTANCES
+
 """
 Opisowo:
 1. Losujemy punkt rozpoczęcie trasy (możemy też go wybrać na twardo i też będzie dobrze) i dodajemy go na początek listy pi (listy kolejnych odwiedzanych punktów.
