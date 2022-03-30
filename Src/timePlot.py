@@ -18,17 +18,17 @@ def timePlot(problem):
     xpoints.append((datetime.now() - startTime).total.seconds())
 
     startTime = datetime.now()
-    tour, starting = NN_algo()
+    tour, starting = NN_algo(problem)
     ypoints.append(tour)
     xpoints.append((datetime.now() - startTime).total.seconds())
 
     startTime = datetime.now()
-    tour, endList = ENN_algo()
+    tour, endList = ENN_algo(problem)
     ypoints.append(tour)
     xpoints.append((datetime.now() - startTime).total.seconds())
 
     startTime = datetime.now()
-    endList, tour = two_opt()
+    endList, tour = two_opt(problem)
     ypoints.append(tour)
     xpoints.append((datetime.now() - startTime).total.seconds())
 
