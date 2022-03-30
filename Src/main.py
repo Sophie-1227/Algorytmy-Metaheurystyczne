@@ -4,7 +4,7 @@ import tsplib95
 from Src.ExtendedNN_Algorythm import ENN_algo
 from Src.NN_Algorythm import NN_algo
 from Src.krandom import krandom
-from Src.kRandomPlot import ploting
+from Src.kRandomPlot import kRandomPlot
 from Src.two_opt import two_opt
 
 
@@ -54,4 +54,4 @@ if __name__ == '__main__':
 
     #print(two_opt(problem))
 
-    ploting(problem)
+    kRandomPlot(problem)
