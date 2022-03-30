@@ -13,7 +13,7 @@ def NNA(problem, k):
     endList.append(starting)
     avaibleList.remove(starting)
 
-    while len(avaibleList != 0):
+    while len(avaibleList) != 0:
         bestCost = np.inf #przypisujemy infnum do długości trasy, żeby mieć pewność, że każda z podanych jest od niej mniejsza
         for i in avaibleList:
             curCost = problem.get_weight(*(endList[-1], i))
