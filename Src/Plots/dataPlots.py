@@ -1,12 +1,7 @@
+from Src.Algorythms.two_opt import two_opt
 import matplotlib.pyplot as plt
-import networkx as nx
-import numpy as np
-import matplotlib.pyplot as plt
-from two_opt import two_opt
-import matplotlib.pyplot as plt
-from Src.NN_Algorythm import NNA
-from Src.NN_Algorythm import NNA
-from Src.krandom import krandom
+from Src.Algorythms.NN_Algorythm import NNA
+from Src.Algorythms.krandom import krandom
 
 
 #koszt od wielkosci instancji
@@ -47,17 +42,3 @@ def twoOptTourPlot(problem):
     plt.show()
 
 
-# rozne wierzcholki startowe
-def NNAPlot(problem):
-    xpoints = []
-    ypoints = []
-    for i in range(1,30):
-        starting, length  = NNA(problem, i)
-        xpoints.append(i)
-        ypoints.append(length)
-
-    plt.plot(xpoints, ypoints, 'o')
-    plt.xlabel('Starting point')
-    plt.ylabel('Tour length')
-    plt.title('NN-method plot')
-    plt.show()

@@ -1,9 +1,8 @@
 import matplotlib.pyplot as plt
 import time
-from datetime import datetime
 
-from Src.krandom import krandom
-from Src.two_opt import two_opt
+from Src.Algorythms.krandom import krandom
+from Src.Algorythms.two_opt import two_opt
 
 
 def kRandomTimePlot(problem):
@@ -40,6 +39,7 @@ def two_optTimePlot(problem):
     plt.ylabel('Tour length')
     plt.title('Execution time')
     plt.show()
+
 
 """
 def everyAlgPlot(problem)

@@ -1,6 +1,6 @@
-from Src.NN_Algorythm import NNA
-from Src.krandom import krandom
-from Src.two_opt import two_opt
+from Src.Algorythms.NN_Algorythm import NNA
+from Src.Algorythms.krandom import krandom
+from Src.Algorythms.two_opt import two_opt
 
 # test, ze jesli odpale two opta na zachlannym np. do two_opt dam krandom to two_opt rozplacze sciezki
 # wniosek: sciezka bedzie taka sama/albo szybsza

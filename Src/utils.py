@@ -1,3 +1,5 @@
+# metody napisane przed odkryciem innych metod z tsplib95, ktore je zastapily
+
 import numpy as np
 
 def evaluate(problem):

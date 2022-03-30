@@ -1,9 +1,9 @@
 import tsplib95
 
-from Src.NN_Algorythm import NNA
-from Src.NN_Algorythm_Ext import ENNA
-from Src.krandom import krandom
-from Src.two_opt import two_opt
+from Src.Algorythms.NN_Algorythm import NNA
+from Src.Algorythms.NN_Algorythm_Ext import ENNA
+from Src.Algorythms.krandom import krandom
+from Src.Algorythms.two_opt import two_opt
 
 
 def PRD_calc(problem):
