@@ -10,6 +10,7 @@ from Src.krandom import krandom
 from Src.kRandomPlot import kRandomPlot
 from Src.timePlot import kRandomTimePlot, two_optTimePlote
 from Src.two_opt import two_opt
+from twoOptPlot import twoOptTourPlot
 
 
 def evaluate(problem):
@@ -32,7 +33,6 @@ def random_solve(problem):
 if __name__ == '__main__':
     #zapisuje caly obiekt
     problem = tsplib95.load('../Data/bays29/bays29.tsp')
-
     #wypisanie macierzy
     #print(problem.edge_weights)
 
