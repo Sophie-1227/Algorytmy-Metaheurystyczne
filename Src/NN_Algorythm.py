@@ -45,7 +45,6 @@ def NN_algo(problem, k):
     for i in range (1,dimension):
         best = 927638108236
         for j in range (1,30-len(endList)):
-            #temp = matrix[i][j] #nie mam pojęcia jak wejsc do tego matrixa, bo potrzebuje wyciagnac konkretna wartosc odleglosci
             temp = problem.get_weight(*(endList[-1], j))
             if temp < best and j not in endList:
                 best = temp
