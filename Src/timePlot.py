@@ -1,3 +1,4 @@
+import matplotlib
 import matplotlib.pyplot as plt
 from datetime import datetime
 import networkx as nx
@@ -9,13 +10,27 @@ from Src.ExtendedNN_Algorythm import ENN_algo
 from Src.two_opt import two_opt
 
 
-def timePlot(problem):
+def kRandomTimePlot(problem):
+
     xpoints = []
     ypoints = []
 
+    for i in range(1, 30):
     startTime = datetime.now()
-    ypoints.append(krandom(problem, 10000))
-    xpoints.append((datetime.now() - startTime).total.seconds())
+    ypoints.append(krandom(problem, 30000))
+    xpoints.append((datetime.now() - startTime).microseconds)
+    print(ypoints)
+
+    plt.plot(xpoints, ypoints)
+    plt.xlabel('Time of execusion')
+    plt.ylabel('Tour length')
+    plt.title('Time comperision between methods')
+    plt.show()
+
+
+"""
+    
+
 
     startTime = datetime.now()
     tour, starting = NN_algo(problem)
@@ -31,9 +46,6 @@ def timePlot(problem):
     endList, tour = two_opt(problem)
     ypoints.append(tour)
     xpoints.append((datetime.now() - startTime).total.seconds())
+"""
 
-    plt.plot(xpoints, ypoints)
-    plt.xlabel('Time of execusion')
-    plt.ylabel('Tour length')
-    plt.title('Time comperision between methods')
-    plt.show()
+

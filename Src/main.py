@@ -5,7 +5,7 @@ from Src.ExtendedNN_Algorythm import ENN_algo
 from Src.NN_Algorythm import NN_algo
 from Src.krandom import krandom
 from Src.kRandomPlot import kRandomPlot
-from Src.timePlot import timePlot
+from Src.timePlot import kRandomTimePlot
 from Src.two_opt import two_opt
 
 
@@ -56,4 +56,4 @@ if __name__ == '__main__':
     #print(two_opt(problem))
 
     #kRandomPlot(problem)
-    timePlot(problem)
+    kRandomTimePlot(problem)
