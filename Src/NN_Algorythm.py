@@ -46,7 +46,7 @@ def NN_algo(problem, k):
         best = 927638108236
         for j in range (1,30-len(endList)):
             #temp = matrix[i][j] #nie mam pojęcia jak wejsc do tego matrixa, bo potrzebuje wyciagnac konkretna wartosc odleglosci
-            temp = problem.get_weight(*(point, j))
+            temp = problem.get_weight(*(endList[-1], j))
             if temp < best and j not in endList:
                 best = temp
                 point = j
@@ -54,7 +54,7 @@ def NN_algo(problem, k):
         #print("przed ", best, "iteracja ", i)
         odleglosc += best
         #print("odleglosc 1 ", odleglosc)
-    odleglosc += problem.get_weight(*(point, starting))
+    odleglosc += problem.get_weight(*(endList[-1], starting))
 
     print(odleglosc)
     print(endList)
