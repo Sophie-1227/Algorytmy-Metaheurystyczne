@@ -19,7 +19,7 @@ def kRandomTimePlot(problem):
     plt.plot(xpoints, ypoints)
     plt.xlabel('Time of execusion [microseconds]')
     plt.ylabel('Tour length')
-    plt.title('Execution time')
+    plt.title('k-random Execution time')
     plt.show()
 
 def two_optTimePlot(problem):
@@ -37,7 +37,7 @@ def two_optTimePlot(problem):
     plt.plot(xpoints, ypoints)
     plt.xlabel('Time of execusion [microseconds]')
     plt.ylabel('Tour length')
-    plt.title('Execution time')
+    plt.title('2 OPT Execution time')
     plt.show()
 
 

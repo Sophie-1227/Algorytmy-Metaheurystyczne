@@ -9,7 +9,8 @@ from Src.two_opt_GRD import two_opt_GRD
 if __name__ == '__main__':
 
     #wczytuje i zapisuje caly obiekt
-    problem = tsplib95.load('../Data/bays29/bays29.tsp')
+    #problem = tsplib95.load('../Data/bays29/bays29.tsp')
+    problem = tsplib95.load('../Data/berlin52/berlin52.tsp')
 
     """--- PLOTS ---"""
     twoOptTourPlot(problem)
@@ -17,7 +18,6 @@ if __name__ == '__main__':
     kRandomTimePlot(problem)
     two_optTimePlot(problem)
     NN_AlgorythmPlot(problem)
-    two_optTimePlot(problem)
 
     PRD_calc(problem)
     two_opt_GRD(problem)
