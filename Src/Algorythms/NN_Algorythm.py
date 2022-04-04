@@ -1,13 +1,14 @@
 import random as rand
 import numpy as np
 
-def NNA(problem, starting = 1):
-    """
+def NNA(problem, k):
+    dimension = problem.dimension
+
     if k==0 :
-        starting = rand.randint(1,29)
+        starting = rand.randint(1, dimension)
     else:
         starting = k
-    """
+
 
 
     endList = []

@@ -1,4 +1,5 @@
 import os
+import shutil
 import sys
 
 import tsplib95.models
@@ -12,7 +13,12 @@ class RandomDataGenerator:
         pass
 
     def createDir(self):
-        os.mkdir(self.DATASET_DIR_NAME)
+        if self.DATASET_DIR_NAME not in os.listdir((os.getcwd())):
+            os.mkdir(self.DATASET_DIR_NAME)
+
+    def removeDir(self):
+        if self.DATASET_DIR_NAME in os.listdir(os.getcwd()):
+            shutil.rmtree(self.DATASET_DIR_NAME)
 
     def createRandomDataset(self, name, matrix: list, fileType=".tsp"):
         self.createDir()
