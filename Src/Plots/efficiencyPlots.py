@@ -24,7 +24,7 @@ def randomDataPlot():
     xpoints = []
 
     for i in range(10, 110, 10):
-        problem = tsplib95.load('../RandomDataset/MyData{i}/MyData{i}.tsp')
+        problem = tsplib95.load(f'../Src/RandomDataset/MyData{i}/MyData{i}.tsp')
         xpoints.append(i)
         startTime = time.time_ns()
         two_opt(problem)

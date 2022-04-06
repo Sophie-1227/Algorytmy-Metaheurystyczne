@@ -16,5 +16,3 @@ def two_opt_GRD(problem):
     # analogicznie
     print(NNA_Cost)
     print(two_opt(problem, NNA_Path)[1])
-
-
