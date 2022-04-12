@@ -1,3 +1,6 @@
+import tsplib95
+import time
+
 import numpy as np
 
 def invert(array, i, j):
@@ -15,11 +18,9 @@ def two_opt(problem, curList = None):
         curList = list(problem.get_nodes())
 
     dimension = problem.dimension
-    point = list(range(1,dimension+1))
     #curList = list(problem.get_nodes())
-    #np.random.shuffle(curList)
+    np.random.shuffle(curList)
     tempList = curList.copy()
-    endList = curList.copy()
 
     while True:
         for i in range(1, dimension+1):
@@ -34,3 +35,14 @@ def two_opt(problem, curList = None):
         curList = tempList.copy()
     print(curList)
     print(problem.trace_tours([curList])[0])
+
+    """
+    while time.time() - time_start < 30:
+    """
+
+
+
+
+if __name__ == '__main__':
+    problem = tsplib95.load('../Data/bays29/bays29.tsp')
+    print (two_opt(problem))

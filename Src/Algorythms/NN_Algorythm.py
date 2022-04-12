@@ -9,8 +9,6 @@ def NNA(problem, k):
     else:
         starting = k
 
-
-
     endList = []
     avaibleList = list(problem.get_nodes())
     previouPoint = starting

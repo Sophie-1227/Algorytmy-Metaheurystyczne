@@ -10,9 +10,10 @@ def PRD_calc(problem):
 
     _,costKRandom = krandom(problem, 1000)
     _,costTwo_Opt = two_opt(problem)
-    _,cost_NNA = NNA(problem)
+    _,cost_NNA = NNA(problem, 0)
     _,costNNA_Ext = ENNA(problem)
-    solution = tsplib95.load_solution('../Data/berlin52/berlin52.opt.tour')
+    #solution = tsplib95.load_solution('../Data/berlin52/berlin52.opt.tour')
+    solution = tsplib95.load_solution('../Data/bays29/bays29.opt.tour')
     opt = problem.trace_tours(solution.tours)[0]
     print(solution.tours)
 

@@ -7,7 +7,7 @@ from Src.Algorythms.two_opt import two_opt
 
 def two_opt_GRD(problem):
     krandomPath,krandomCost = krandom(problem,100)
-    NNA_Path,NNA_Cost = NNA(problem)
+    NNA_Path,NNA_Cost = NNA(problem,0)
 
     # krandom jest rozplatany przez two_opt
     print(krandomCost)
