@@ -7,7 +7,13 @@ import time
 import numpy as np
 
 from Src.Algorythms.NN_Algorythm import NNA
+from Src.utils import evaluate
 
+def invert_m(solution: np.array) -> np.array:
+    for i in range(len(solution)):
+        for j in range(i + 1, len(solution)):
+            neighbour = np.concatenate((solution[:i], solution[i:j + 1][::-1], solution[j + 1:]))
+            yield neighbour
 
 def invert(array, i, j):
     length = j - i + 1
@@ -51,10 +57,8 @@ class TabooSearch:
     def basicSearch(self, neighborFunction, startSolution: np.array):
         startTime = time.time()
         NNAPath, NNACost = NNA(problem, 0)
-        startSolution = two_opt(problem, NNAPath)[1]
-
+        startSolution, bestCost = two_opt(problem, NNAPath)
         bestSolution = startSolution
-        bestCost = problem.cost(startSolution)
 
         solution = bestSolution.copy()
         tabooList = deque([], 20)
@@ -63,7 +67,7 @@ class TabooSearch:
             neighborBestSolution = np.array([])
             neighborBestCost = np.inf
             for neighborSolution in neighborFunction(solution):
-                neighborCost = self.data.cost(neighborSolution)
+                neighborCost = problem.cost(neighborSolution)
                 (tabooList == neighborSolution).any()
                 if neighborCost < neighborBestCost and (tabooList == neighborSolution).any():
                     neighborBestSolution = neighborSolution
@@ -87,5 +91,5 @@ class TabooSearch:
 if __name__ == '__main__':
     problem = tsplib95.load('../Data/bays29/bays29.tsp')
     #print (two_opt(problem))
-    taboo = TabooSearch(self)
-    print(taboo.basicSearch(self, neighborFunction=None, startSolution=None))
+    taboo = TabooSearch()
+    print(taboo.basicSearch(neighborFunction = invert_m, startSolution=None))
