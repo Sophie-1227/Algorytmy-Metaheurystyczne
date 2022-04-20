@@ -1,3 +1,5 @@
+from collections import deque
+
 import tsplib95
 import time
 
@@ -43,43 +45,43 @@ def two_opt(problem, curList = None):
     while time.time() - time_start < 30:
     """
 
-def update(self, last_solution: np.array, last_cost: int):
-    last_solution = last_solution
-    last_cost = last_cost
+def update(self, lastSolution: np.array, lastCost: int):
+    lastSolution = lastSolution
+    lastCost = lastCost
 
-def basicSearch(neighboring_function, starting_solution: np.array):
-    time_start = time.time()
-    NNA_Path, NNA_Cost = NNA(problem, 0)
-    startingSolution = two_opt(problem, NNA_Path)[1]
+def basicSearch(self, neighborFunction, startSolution: np.array):
+    startTime = time.time()
+    NNAPath, NNACost = NNA(problem, 0)
+    startSolution = two_opt(problem, NNAPath)[1]
     #
-    bestSolution = startingSolution
-    bestCost = data.cost(startingSolution)
+    bestSolution = startSolution
+    bestCost = problem.cost(startSolution)
 
     solution = bestSolution.copy()
     tabooList = deque([], 20)
     tabooList.append(solution)
-    while time.time() - time_start < 30:
-        neighboring_best_solution = np.array([])
-        neighboring_best_cost = np.inf
-        for neighboring_solution in neighboring_function(solution):
-            neighboring_cost = self.data.cost(neighboring_solution)
-            (taboo_list == neighboring_solution).any()
-            if neighboring_cost < neighboring_best_cost and (taboo_list == neighboring_solution).any():
-                neighboring_best_solution = neighboring_solution
-                neighboring_best_cost = neighboring_cost
-            solution = neighboring_best_solution
-            cost = neighboring_best_cost
-            taboo_list.append(solution)
+    while time.time() - startTime < 30:
+        neighborBestSolution = np.array([])
+        neighborBestCost = np.inf
+        for neighborSolution in neighborFunction(solution):
+            neighborCost = self.data.cost(neighborSolution)
+            (tabooList == neighborSolution).any()
+            if neighborCost < neighborBestCost and (tabooList == neighborSolution).any():
+                neighborBestSolution = neighborSolution
+                neighborBestCost = neighborCost
+            solution = neighborBestSolution
+            cost = neighborBestCost
+            tabooList.append(solution)
 
-                if cost < best_cost:
-                    best_cost = cost
-                    best_solution = solution
+            if cost < bestCost:
+                bestCost = cost
+                bestSolution = solution
 
-            self.__update(best_solution, best_cost)
-            return best_cost
+            self.__update(bestSolution, bestCost)
+            return bestCost
 
-        def search(self, neighboring_function, starting_solution):
-            return self.__basic_search(neighboring_function=neighboring_function, starting_solution=starting_solution)
+        def search(self, neighborFunction, startSolution):
+            return self.__basic_search(neighborFunction=neighborFunction, startSolution=startSolution)
 
 
 
