@@ -54,7 +54,7 @@ class TabooSearch:
         lastSolution = lastSolution
         lastCost = lastCost
 
-    def basicSearch(self, neighborFunction, startSolution: np.array):
+    def basicSearch(self, startSolution: np.array):
         startTime = time.time()
         NNAPath, NNACost = NNA(problem, 0)
         startSolution, bestCost = two_opt(problem, NNAPath)
@@ -66,7 +66,7 @@ class TabooSearch:
         while time.time() - startTime < 30:
             neighborBestSolution = np.array([])
             neighborBestCost = np.inf
-            for neighborSolution in neighborFunction(solution):
+            for neighborSolution in invert_m(solution):
                 neighborCost = problem.trace_tours([neighborSolution])[0]
                 (tabooList == neighborSolution).any()
                 if neighborCost < neighborBestCost and (tabooList == neighborSolution).any():
@@ -83,8 +83,8 @@ class TabooSearch:
                 self.__update(bestSolution, bestCost)
                 return bestCost
 
-            def search(self, neighborFunction, startSolution):
-                return self.__basic_search(neighborFunction=neighborFunction, startSolution=startSolution)
+            def search(self, startSolution):
+                return self.__basic_search(startSolution=startSolution)
 
 
 
@@ -92,4 +92,4 @@ if __name__ == '__main__':
     problem = tsplib95.load('../Data/bays29/bays29.tsp')
     #print (two_opt(problem))
     taboo = TabooSearch()
-    print(taboo.basicSearch(neighborFunction = invert_m, startSolution=None))
+    print(taboo.basicSearch(startSolution=None))
