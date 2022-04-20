@@ -57,45 +57,43 @@ def get_cost(problem: tsplib95.models.StandardProblem, tour):
 
 class TabooSearch:
 
-    def basicSearch(self, neighboring_function, starting_solution: np.array,problem):
-        time_start = time.time()
+    def basicSearch(self, neighbourFunction, starting: np.array,problem):
+        startTime = time.time()
         NNA_Path, NNA_Cost = NNA(problem, 0)
-        starting_solution, best_cost = two_opt(problem, NNA_Path)
-        best_solution = starting_solution
-
-        def __update(self, last_solution: np.array, last_cost: int):
-            self.last_solution = last_solution
-            self.last_cost = last_cost
-
-        solution = best_solution.copy()
+        starting, endCost = two_opt(problem, NNA_Path)
+        endList = starting
+        solution = endList.copy()
         lengthDeque = problem.dimension
-        taboo_list = deque([], lengthDeque) # <- struktura listy tabu deque
-        taboo_list.append(solution)
-        while time.time() - time_start < 5: # <- Warunek stopu = czas
-            neighboring_best_solution = np.array([])
-            neighboring_best_cost = np.inf
+        tabooList = deque([], lengthDeque) # <- struktura listy tabu deque
+        tabooList.append(solution)
+        while time.time() - startTime < 5: # <- Warunek stopu = czas
+            neighborEndList = np.array([])
+            neighborEndCost = np.inf
 
-            for neighboring_solution in (n for n  in neighboring_function(solution) if n not in taboo_list):
-                    if  get_cost(problem, neighboring_solution) < neighboring_best_cost:
-                        neighboring_best_solution = neighboring_solution
-                        neighboring_best_cost = get_cost(problem, neighboring_best_solution)
+            for newNeighbor in (n for n  in neighbourFunction(solution) if n not in tabooList):
+                    if  get_cost(problem, newNeighbor) < neighborEndCost:
+                        neighborEndList = newNeighbor
+                        neighborEndCost = get_cost(problem, neighborEndList)
 
-            solution = neighboring_best_solution
-            cost = neighboring_best_cost
-            taboo_list.append(solution)
+            solution = neighborEndList
+            cost = neighborEndCost
+            tabooList.append(solution)
 
-            if cost < best_cost:
-                best_cost = cost
-                best_solution = solution
+            if cost < endCost:
+                endCost = cost
+                endList = solution
 
-        self.__update(best_solution, best_cost)
-        return best_cost
+        self.__update(endList, endCost)
+        return endCost
 
+    def __update(self, endTour: np.array, finalCost: int):
+        self.endTour = endTour
+        self.finalCost = finalCost
 
 if __name__ == '__main__':
     problem = tsplib95.load('../Data/bays29/bays29.tsp')
     NNAPath, NNACost = NNA(problem, 0)
-    startSolution, bestCost = two_opt(problem, NNAPath)
-    print(bestCost)
+    startSolution, endCost = two_opt(problem, NNAPath)
+    print(endCost)
     taboo = TabooSearch()
-    print(taboo.basicSearch(neighboring_function = tabuInvert, starting_solution = startSolution, problem = problem))
+    print(taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution, problem = problem))
