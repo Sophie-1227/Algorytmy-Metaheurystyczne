@@ -49,15 +49,29 @@ def two_opt(problem, curList = None):
     print(curList)
     print(problem.trace_tours([curList])[0])
 
+def get_cost(problem: tsplib95.models.StandardProblem, tour):
+    cost = 0
+    for i in range(len(tour) - 1):
+        cost += problem.get_weight((tour[i], tour[i + 1]))
+    cost += problem.get_weight((tour[-1], tour[0]))
+    return cost
+
 class TabooSearch:
+
+    def __init__(self):
+        self.problem = tsplib95.load('../Data/bays29/bays29.tsp')
+
+
+
     def __update(self, last_solution: np.array, last_cost: int):
         self.last_solution = last_solution
         self.last_cost = last_cost
 
     def basicSearch(self, neighboring_function, starting_solution: np.array):
         time_start = time.time()
+        NNA_Path, NNA_Cost = NNA(problem, 0)
+        starting_solution, best_cost = two_opt(problem, NNA_Path)
         best_solution = starting_solution
-        best_cost = problem.trace_tours([starting_solution])[0]
 
         solution = best_solution.copy()
         taboo_list = deque([], 20) # <- struktura listy tabu - Kolejka?
@@ -68,10 +82,9 @@ class TabooSearch:
 
             for neighboring_solution in neighboring_function(solution):
                 if not any([x.all() for x in neighboring_solution == taboo_list]): # If neighboring solution is not in taboo list
-                    neighboring_cost = problem.trace_tours([neighboring_solution])[0]
-                    if neighboring_cost < neighboring_best_cost:
+                    if  get_cost(problem, neighboring_solution) < neighboring_best_cost:
                         neighboring_best_solution = neighboring_solution
-                        neighboring_best_cost = neighboring_cost
+                        neighboring_best_cost = get_cost(problem, neighboring_best_solution)
 
             solution = neighboring_best_solution
             cost = neighboring_best_cost
