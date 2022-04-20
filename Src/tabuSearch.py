@@ -67,7 +67,7 @@ class TabooSearch:
             neighborBestSolution = np.array([])
             neighborBestCost = np.inf
             for neighborSolution in neighborFunction(solution):
-                neighborCost = problem.cost(neighborSolution)
+                neighborCost = problem.trace_tours([neighborSolution])[0]
                 (tabooList == neighborSolution).any()
                 if neighborCost < neighborBestCost and (tabooList == neighborSolution).any():
                     neighborBestSolution = neighborSolution
