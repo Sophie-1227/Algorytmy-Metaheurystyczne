@@ -53,7 +53,7 @@ def basicSearch(self, neighborFunction, startSolution: np.array):
     startTime = time.time()
     NNAPath, NNACost = NNA(problem, 0)
     startSolution = two_opt(problem, NNAPath)[1]
-    #
+
     bestSolution = startSolution
     bestCost = problem.cost(startSolution)
 
@@ -87,4 +87,5 @@ def basicSearch(self, neighborFunction, startSolution: np.array):
 
 if __name__ == '__main__':
     problem = tsplib95.load('../Data/bays29/bays29.tsp')
-    print (two_opt(problem))
+    #print (two_opt(problem))
+    print(basicSearch(self, neighborFunction=invert, startSolution=None))
