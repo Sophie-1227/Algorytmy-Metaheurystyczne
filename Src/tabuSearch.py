@@ -10,11 +10,12 @@ import numpy as np
 from Src.Algorythms.NN_Algorythm import NNA
 from Src.utils import evaluate
 
-def invert_m(solution: np.array) -> np.array:
+def invert_m(solution: list):
+    neighbours = []
     for i in range(len(solution)):
         for j in range(i + 1, len(solution)):
-            neighbour = np.concatenate((solution[:i], solution[i:j + 1][::-1], solution[j + 1:]))
-            yield neighbour
+            neighbours.append(solution[:i] + solution[i:j + 1][::-1] + solution[j + 1:])
+    return neighbours
 
 def invert(array, i, j):
     length = j - i + 1
@@ -52,8 +53,8 @@ def two_opt(problem, curList = None):
 def get_cost(problem: tsplib95.models.StandardProblem, tour):
     cost = 0
     for i in range(len(tour) - 1):
-        cost += problem.get_weight((tour[i], tour[i + 1]))
-    cost += problem.get_weight((tour[-1], tour[0]))
+        cost += problem.get_weight(*(tour[i], tour[i + 1]))
+    cost += problem.get_weight(*(tour[-1], tour[0]))
     return cost
 
 class TabooSearch:
@@ -67,7 +68,7 @@ class TabooSearch:
         self.last_solution = last_solution
         self.last_cost = last_cost
 
-    def basicSearch(self, neighboring_function, starting_solution: np.array):
+    def basicSearch(self, neighboring_function, starting_solution: np.array,problem):
         time_start = time.time()
         NNA_Path, NNA_Cost = NNA(problem, 0)
         starting_solution, best_cost = two_opt(problem, NNA_Path)
@@ -80,8 +81,9 @@ class TabooSearch:
             neighboring_best_solution = np.array([])
             neighboring_best_cost = np.inf
 
-            for neighboring_solution in neighboring_function(solution):
-                if not any([x.all() for x in neighboring_solution == taboo_list]): # If neighboring solution is not in taboo list
+            for neighboring_solution in (n for n  in neighboring_function(solution) if n not in taboo_list):
+                # You can roughly think of any and all as series of logical or and and operators, respectively.
+                #if not any([x.all() for x in neighboring_solution == taboo_list]): # If neighboring solution is not in taboo list
                     if  get_cost(problem, neighboring_solution) < neighboring_best_cost:
                         neighboring_best_solution = neighboring_solution
                         neighboring_best_cost = get_cost(problem, neighboring_best_solution)
@@ -111,4 +113,4 @@ if __name__ == '__main__':
     NNAPath, NNACost = NNA(problem, 0)
     startSolution, bestCost = two_opt(problem, NNAPath)
     taboo = TabooSearch()
-    print(taboo.basicSearch(neighboring_function = invert_m, starting_solution = startSolution))
+    print(taboo.basicSearch(neighboring_function = invert_m, starting_solution = startSolution, problem = problem))
