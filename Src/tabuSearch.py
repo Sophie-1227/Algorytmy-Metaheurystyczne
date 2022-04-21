@@ -67,7 +67,7 @@ def get_cost(problem: tsplib95.models.StandardProblem, tour):
 
 class TabooSearch:
 
-    def basicSearch(self, neighbourFunction, starting: np.array,problem, k, maxTime):
+    def basicSearch(self, neighbourFunction, starting: np.array,endCost, problem, k, maxTime):
         startTime = time.time()
         #NNA_Path, NNA_Cost = NNA(problem, 0)
         #starting, endCost = two_opt(problem, NNA_Path)
@@ -107,4 +107,4 @@ if __name__ == '__main__':
     print(endCost)
     taboo = TabooSearch()
     for i in range (1,10,2):
-        print(taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution, problem = problem, k=i, maxTime = 5))
+        print(taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution, firstCost = endCost, problem = problem, k=i, maxTime = 5))
