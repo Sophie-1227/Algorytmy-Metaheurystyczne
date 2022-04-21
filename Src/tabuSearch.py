@@ -69,8 +69,8 @@ class TabooSearch:
 
     def basicSearch(self, neighbourFunction, starting: np.array,problem, k, maxTime):
         startTime = time.time()
-        NNA_Path, NNA_Cost = NNA(problem, 0)
-        starting, endCost = two_opt(problem, NNA_Path)
+        #NNA_Path, NNA_Cost = NNA(problem, 0)
+        #starting, endCost = two_opt(problem, NNA_Path)
         endList = starting
         solution = endList.copy()
         lengthDeque = problem.dimension
