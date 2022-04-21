@@ -15,6 +15,16 @@ def tabuInvert(solution: list):
             neighbours.append(solution[:i] + solution[i:j + 1][::-1] + solution[j + 1:])
     return neighbours
 
+def tabuSwap(solution: list):
+    neighbours = []
+    for i in range(len(solution)):
+        for j in range(len(solution)):
+            neighbours = solution.copy()
+            temp = neighbours[i]
+            neighbours[i] = neighbours[j]
+            neighbours[j] = temp
+    return neighbours
+
 def invert(array, i, j):
     length = j - i + 1
     temp = []
@@ -57,14 +67,14 @@ def get_cost(problem: tsplib95.models.StandardProblem, tour):
 
 class TabooSearch:
 
-    def basicSearch(self, neighbourFunction, starting: np.array,problem):
+    def basicSearch(self, neighbourFunction, starting: np.array,problem, k):
         startTime = time.time()
         NNA_Path, NNA_Cost = NNA(problem, 0)
         starting, endCost = two_opt(problem, NNA_Path)
         endList = starting
         solution = endList.copy()
         lengthDeque = problem.dimension
-        tabooList = deque([], lengthDeque) # <- struktura listy tabu deque
+        tabooList = deque([], k*lengthDeque) # <- struktura listy tabu deque
         tabooList.append(solution)
         while time.time() - startTime < 5: # <- Warunek stopu = czas
             neighborEndList = np.array([])
@@ -96,4 +106,5 @@ if __name__ == '__main__':
     startSolution, endCost = two_opt(problem, NNAPath)
     print(endCost)
     taboo = TabooSearch()
-    print(taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution, problem = problem))
+    for i in range (1,10,2):
+        print(taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution, problem = problem, k=i))
