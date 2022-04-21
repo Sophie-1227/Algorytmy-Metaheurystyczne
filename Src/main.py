@@ -3,16 +3,17 @@ import tsplib95
 from Src.PRD import PRD_calc
 from Src.Plots.dataPlots import NN_AlgorythmPlot, twoOptTourPlot, kRandomPlot
 from Src.Plots.efficiencyPlots import randomDataPlot
+from Src.Plots.tabooPlots import timeVsResult, listLengthPlot
 from Src.Plots.timePlots import kRandomTimePlot, two_optTimePlot
 from Src.two_opt_GRD import two_opt_GRD
 
 if __name__ == '__main__':
-
+    """
     #wczytuje i zapisuje caly obiekt
     problem = tsplib95.load('../Data/bays29/bays29.tsp')
     #problem = tsplib95.load('../Data/berlin52/berlin52.tsp')
 
-    """--- PLOTS and analyze PART 1 ---"""
+    --- PLOTS and analyze PART 1 ---
     #randomDataPlot()
     twoOptTourPlot(problem)
     kRandomPlot(problem)
@@ -22,3 +23,9 @@ if __name__ == '__main__':
 
     PRD_calc(problem)
     two_opt_GRD(problem)
+    """
+
+    timeVsResult(5)
+    listLengthPlot()
+
+
