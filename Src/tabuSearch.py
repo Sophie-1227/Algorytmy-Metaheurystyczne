@@ -107,4 +107,4 @@ if __name__ == '__main__':
     print(endCost)
     taboo = TabooSearch()
     for i in range (1,10,2):
-        print(taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution, firstCost = endCost, problem = problem, k=i, maxTime = 5))
+        print(taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution, endCost = endCost, problem = problem, k=i, maxTime = 5))

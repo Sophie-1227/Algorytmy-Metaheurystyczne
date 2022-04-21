@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 
-from Src.tabuSearch import TabooSearch, tabuInvert, startSolution, problem, two_opt, NNAPath
+from Src.tabuSearch import TabooSearch, two_opt, problem, NNAPath, tabuInvert
 
 taboo = TabooSearch()
 startSolution, endCost = two_opt(problem, NNAPath)
@@ -38,3 +38,7 @@ def timeVsResult(maxTimeIteration):
     plt.ylabel('Tour length')
     plt.title('Results in time')
     plt.show()
+
+if __name__ == '__main__':
+    listLengthPlot()
+    timeVsResult(maxTimeIteration=15)
