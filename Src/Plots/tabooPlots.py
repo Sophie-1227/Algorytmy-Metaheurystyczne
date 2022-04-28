@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 
-from Src.tabuSearch import TabooSearch, two_opt, problem, NNAPath, tabuInvert
+from Src.tabuSearch import TabooSearch, two_opt, problem, NNAPath, tabuInvert, solution
 
 taboo = TabooSearch()
 startSolution, endCost = two_opt(problem, NNAPath)
@@ -42,3 +42,19 @@ def timeVsResult(maxTimeIteration):
 if __name__ == '__main__':
     listLengthPlot()
     timeVsResult(maxTimeIteration=15)
+
+
+def avarageListLength():
+    sucess = 0
+    totalIterations = 100
+    for i in range(10):
+        for j in range(10):
+            startSolution, endCost = two_opt(problem, NNAPath)
+            temp = taboo.basicSearch(neighbourFunction=tabuInvert, starting=startSolution, endCost=endCost, problem=problem, k=i, maxTime=10)[1]
+            if temp<startSolution:
+                sucess += j
+            elif startSolution == problem.trace_tours(solution.tours)[0]:
+                totalIterations =-1
+
+    avarageLength = sucess//totalIterations
+    print(avarageLength)
