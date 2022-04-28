@@ -1,9 +1,10 @@
+import tsplib95
 from matplotlib import pyplot as plt
 
-from Src.tabuSearch import TabooSearch, two_opt, problem, NNAPath, tabuInvert
+from Src.Algorythms.NN_Algorythm import NNA
+from Src.tabuSearch import TabooSearch, two_opt, tabuInvert
 
-taboo = TabooSearch()
-startSolution, endCost = two_opt(problem, NNAPath)
+
 
 def listLengthPlot():
     xpoints = []
@@ -40,5 +41,9 @@ def timeVsResult(maxTimeIteration):
     plt.show()
 
 if __name__ == '__main__':
+    problem = tsplib95.load('../../Data/bays29/bays29.tsp')
+    NNAPath, NNACost = NNA(problem, 0)
+    taboo = TabooSearch()
+    startSolution, endCost = two_opt(problem, NNAPath)
     listLengthPlot()
     timeVsResult(maxTimeIteration=15)
