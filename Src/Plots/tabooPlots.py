@@ -39,11 +39,6 @@ def timeVsResult(maxTimeIteration):
     plt.title('Results in time')
     plt.show()
 
-if __name__ == '__main__':
-    listLengthPlot()
-    timeVsResult(maxTimeIteration=15)
-
-
 def avarageListLength():
     sucess = 0
     totalIterations = 100
@@ -58,3 +53,10 @@ def avarageListLength():
 
     avarageLength = sucess//totalIterations
     print(avarageLength)
+
+if __name__ == '__main__':
+    listLengthPlot()
+    timeVsResult(maxTimeIteration=15)
+    avarageListLength()
+
+
