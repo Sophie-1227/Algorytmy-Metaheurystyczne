@@ -42,9 +42,12 @@ def timeVsResult(maxTimeIteration):
 
 def averageListLength():
     sucess = 0
+    sucessIterations = 0
+    defeat = 0
+    defeatIteration = 0
     iRange = 2
     jRange = 10
-    totalIterations = jRange*iRange
+    #totalIterations = jRange*iRange
     for i in range(1, iRange):
         for j in range(1, jRange):
             #startSolution, endCost = two_opt(problem, NNAPath)
@@ -54,18 +57,27 @@ def averageListLength():
             temp = taboo.basicSearch(neighbourFunction=tabuInvert, starting=startSolution, endCost=endCost, problem=problem, k=i, maxTime=10)[1]
             if temp<endCost:
                 sucess += i
+                sucessIterations +=1
             elif endCost == problem.trace_tours(solution.tours)[0]:
-                totalIterations -= 1
+                continue
+            elif temp>=endCost:
+                defeat += i
+                defeatIteration +=1
 
-    avarageLength = sucess//totalIterations
+    avarageLength = sucess//sucessIterations
+    print("Średnia długość listy ze zmianą wyniku:")
+    print(avarageLength)
+
+    avarageLength = defeat/defeatIteration
+    print("Średnia długość lisy bez zmiany wyniku:")
     print(avarageLength)
 
 if __name__ == '__main__':
     taboo = TabooSearch()
-    problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
-    solution = tsplib95.load_solution('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.opt.tour')
-    #NNAPath, NNACost = NNA(problem, 0)
-    #startSolution, endCost = two_opt(problem, NNAPath)
+    problem = tsplib95.load('C:\Users\zstyp\OneDrive - Politechnika Wroclawska\Pulpit\Studia\Semestr4\Metaheurystyczne\Laby\Projekt1\Data\bays29\bays29.tsp')
+    solution = tsplib95.load('C:\Users\zstyp\OneDrive - Politechnika Wroclawska\Pulpit\Studia\Semestr4\Metaheurystyczne\Laby\Projekt1\Data\bays29\bays29.opt.tour')
+    NNAPath, NNACost = NNA(problem, 0)
+    startSolution, endCost = two_opt(problem, NNAPath)
     #listLengthPlot()
     #timeVsResult(maxTimeIteration=15)
     averageListLength()
