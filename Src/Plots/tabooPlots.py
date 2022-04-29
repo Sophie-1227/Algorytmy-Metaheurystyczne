@@ -1,9 +1,9 @@
+import tsplib95
 from matplotlib import pyplot as plt
 
-from Src.tabuSearch import TabooSearch, two_opt, problem, NNAPath, tabuInvert, solution
+from Src.Algorythms.NN_Algorythm import NNA
+from Src.tabuSearch import TabooSearch, two_opt, tabuInvert
 
-taboo = TabooSearch()
-startSolution, endCost = two_opt(problem, NNAPath)
 
 def listLengthPlot():
     xpoints = []
@@ -39,7 +39,7 @@ def timeVsResult(maxTimeIteration):
     plt.title('Results in time')
     plt.show()
 
-def avarageListLength():
+def averageListLength():
     sucess = 0
     totalIterations = 100
     for i in range(10):
@@ -55,8 +55,13 @@ def avarageListLength():
     print(avarageLength)
 
 if __name__ == '__main__':
+    taboo = TabooSearch()
+    problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
+    solution = tsplib95.load_solution('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.opt.tour')
+    NNAPath, NNACost = NNA(problem, 0)
+    startSolution, endCost = two_opt(problem, NNAPath)
     listLengthPlot()
     timeVsResult(maxTimeIteration=15)
-    avarageListLength()
+    averageListLength()
 
 

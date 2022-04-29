@@ -102,7 +102,7 @@ class TabooSearch:
 
 if __name__ == '__main__':
     problem = tsplib95.load('../Data/bays29/bays29.tsp')
-    solution = tsplib95.load_solution('../Data/bays29/bays29.tsp')
+    solution = tsplib95.load_solution('../Data/bays29/bays29.opt.tour')
     NNAPath, NNACost = NNA(problem, 0)
     startSolution, endCost = two_opt(problem, NNAPath)
     print(endCost)
