@@ -49,7 +49,7 @@ def averageListLength():
             if temp<endCost:
                 sucess += j
             elif endCost == problem.trace_tours(solution.tours)[0]:
-                totalIterations =-1
+                totalIterations -= 1
 
     avarageLength = sucess//totalIterations
     print(avarageLength)
