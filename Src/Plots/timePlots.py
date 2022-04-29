@@ -40,7 +40,6 @@ def two_optTimePlot(problem):
     plt.title('2 OPT Execution time')
     plt.show()
 
-
 """
 def everyAlgPlot(problem)
 
