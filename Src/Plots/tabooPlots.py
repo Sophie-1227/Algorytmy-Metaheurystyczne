@@ -68,14 +68,14 @@ def averageListLength():
     print("Średnia długość listy ze zmianą wyniku:")
     print(avarageLength)
 
-    avarageLength = defeat/defeatIteration
+    avarageLength = defeat//defeatIteration
     print("Średnia długość lisy bez zmiany wyniku:")
     print(avarageLength)
 
 if __name__ == '__main__':
     taboo = TabooSearch()
-    problem = tsplib95.load('C:\Users\zstyp\OneDrive - Politechnika Wroclawska\Pulpit\Studia\Semestr4\Metaheurystyczne\Laby\Projekt1\Data\bays29\bays29.tsp')
-    solution = tsplib95.load('C:\Users\zstyp\OneDrive - Politechnika Wroclawska\Pulpit\Studia\Semestr4\Metaheurystyczne\Laby\Projekt1\Data\bays29\bays29.opt.tour')
+    problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
+    solution = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.opt.tour')
     NNAPath, NNACost = NNA(problem, 0)
     startSolution, endCost = two_opt(problem, NNAPath)
     #listLengthPlot()
