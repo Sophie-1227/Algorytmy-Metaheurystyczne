@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 
 from Src.Algorythms.NN_Algorythm import NNA
 from Src.tabuSearch import TabooSearch, two_opt, tabuInvert
-
+#plots for taboo search
 
 def listLengthPlot():
     xpoints = []
