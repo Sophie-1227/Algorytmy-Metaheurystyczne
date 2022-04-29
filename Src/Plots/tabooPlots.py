@@ -46,9 +46,9 @@ def averageListLength():
         for j in range(10):
             startSolution, endCost = two_opt(problem, NNAPath)
             temp = taboo.basicSearch(neighbourFunction=tabuInvert, starting=startSolution, endCost=endCost, problem=problem, k=i, maxTime=10)[1]
-            if temp<startSolution:
+            if temp<endCost:
                 sucess += j
-            elif startSolution == problem.trace_tours(solution.tours)[0]:
+            elif endCost == problem.trace_tours(solution.tours)[0]:
                 totalIterations =-1
 
     avarageLength = sucess//totalIterations
