@@ -45,15 +45,15 @@ def averageListLength():
     iRange = 2
     jRange = 10
     totalIterations = jRange*iRange
-    for i in range(iRange):
-        for j in range(jRange):
+    for i in range(1, iRange):
+        for j in range(1, jRange):
             #startSolution, endCost = two_opt(problem, NNAPath)
             startSolution = list(problem.get_nodes())
             np.random.shuffle(startSolution)
             endCost = problem.trace_tours([startSolution])[0]
             temp = taboo.basicSearch(neighbourFunction=tabuInvert, starting=startSolution, endCost=endCost, problem=problem, k=i, maxTime=10)[1]
             if temp<endCost:
-                sucess += j
+                sucess += i
             elif endCost == problem.trace_tours(solution.tours)[0]:
                 totalIterations -= 1
 
@@ -64,10 +64,10 @@ if __name__ == '__main__':
     taboo = TabooSearch()
     problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
     solution = tsplib95.load_solution('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.opt.tour')
-    NNAPath, NNACost = NNA(problem, 0)
-    startSolution, endCost = two_opt(problem, NNAPath)
-    listLengthPlot()
-    timeVsResult(maxTimeIteration=15)
+    #NNAPath, NNACost = NNA(problem, 0)
+    #startSolution, endCost = two_opt(problem, NNAPath)
+    #listLengthPlot()
+    #timeVsResult(maxTimeIteration=15)
     averageListLength()
 
 
