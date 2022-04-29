@@ -1,4 +1,5 @@
 import tsplib95
+import numpy as np
 from matplotlib import pyplot as plt
 
 from Src.Algorythms.NN_Algorythm import NNA
@@ -44,7 +45,10 @@ def averageListLength():
     totalIterations = 100
     for i in range(10):
         for j in range(10):
-            startSolution, endCost = two_opt(problem, NNAPath)
+            #startSolution, endCost = two_opt(problem, NNAPath)
+            startSolution = list(problem.get_nodes())
+            np.random.shuffle(startSolution)
+            endCost = problem.trace_tours([startSolution])[0]
             temp = taboo.basicSearch(neighbourFunction=tabuInvert, starting=startSolution, endCost=endCost, problem=problem, k=i, maxTime=10)[1]
             if temp<endCost:
                 sucess += j
