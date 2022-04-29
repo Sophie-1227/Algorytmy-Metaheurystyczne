@@ -42,9 +42,11 @@ def timeVsResult(maxTimeIteration):
 
 def averageListLength():
     sucess = 0
-    totalIterations = 100
-    for i in range(10):
-        for j in range(10):
+    iRange = 2
+    jRange = 10
+    totalIterations = jRange*iRange
+    for i in range(iRange):
+        for j in range(jRange):
             #startSolution, endCost = two_opt(problem, NNAPath)
             startSolution = list(problem.get_nodes())
             np.random.shuffle(startSolution)
