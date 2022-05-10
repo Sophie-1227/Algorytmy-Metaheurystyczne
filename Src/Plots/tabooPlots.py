@@ -67,17 +67,61 @@ def averageListLength():
     avarageLength = sucess/sucessIterations
     print("Średnia długość listy ze zmianą wyniku:")
     print(avarageLength)
+    bestListLength = avarageLength
 
     avarageLength = defeat/defeatIteration
     print("Średnia długość lisy bez zmiany wyniku:")
     print(avarageLength)
 
+    return bestListLength
+
+def optimizedListLength(bestListLength):
+    xpoints = []
+    ypoints = []
+    y7points = []
+    x7points = []
+    y3points = []
+    x3points = []
+    suma = 0
+    ypoints.append(startSolution)
+    xpoints.append(0)
+    y7points.append(startSolution)
+    x7points.append(0)
+    y3points.append(startSolution)
+    x3points.append(0)
+    while ypoints[-1] != solution or suma>6000:
+        ypoints.append(taboo.basicSearch(neighbourFunction=tabuInvert, starting=ypoints[-1], endCost=endCost, problem=problem, k=bestListLength, maxTime=10)[1])
+        suma += 10
+        xpoints.append(suma)
+    suma = 0
+    while y7points != solution or suma>6000:
+        y7points.append(
+            taboo.basicSearch(neighbourFunction=tabuInvert, starting=ypoints[-1], endCost=endCost, problem=problem,
+                              k=problemLength, maxTime=10)[1])
+        suma += 10
+        xpoints.append(suma)
+    suma = 0
+    while y7points != solution or suma>6000:
+        y7points.append(
+            taboo.basicSearch(neighbourFunction=tabuInvert, starting=ypoints[-1], endCost=endCost, problem=problem,
+                              k=3, maxTime=10)[1])
+        suma += 10
+        xpoints.append(suma)
+
+    plt.plot(xpoints, ypoints, label="calculated avarage taboo list length")
+    plt.plot(y7points, x7points, label="taboo list length = 7")
+    plt.plot(y3points, x3points, label="taboo list length = 3n")
+    plt.legend()
+    plt.show()
+
+
 if __name__ == '__main__':
     taboo = TabooSearch()
     problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
     solution = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.opt.tour')
+    problemLength = problem.diminsion
     NNAPath, NNACost = NNA(problem, 0)
     startSolution, endCost = two_opt(problem, NNAPath)
     #listLengthPlot()
     #timeVsResult(maxTimeIteration=15)
-    averageListLength()
+    optimizedListLength(averageListLength())
