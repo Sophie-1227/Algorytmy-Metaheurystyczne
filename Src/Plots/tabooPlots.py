@@ -64,11 +64,11 @@ def averageListLength():
                 defeat += i
                 defeatIteration +=1
 
-    avarageLength = sucess//sucessIterations
+    avarageLength = sucess/sucessIterations
     print("Średnia długość listy ze zmianą wyniku:")
     print(avarageLength)
 
-    avarageLength = defeat//defeatIteration
+    avarageLength = defeat/defeatIteration
     print("Średnia długość lisy bez zmiany wyniku:")
     print(avarageLength)
 
@@ -81,5 +81,3 @@ if __name__ == '__main__':
     #listLengthPlot()
     #timeVsResult(maxTimeIteration=15)
     averageListLength()
-
-
