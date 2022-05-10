@@ -64,12 +64,18 @@ def averageListLength():
                 defeat += i
                 defeatIteration +=1
 
-    avarageLength = sucess/sucessIterations
+    if sucessIterations ==0:
+        avarageLength = iRange
+    else:
+        avarageLength = sucess/sucessIterations
     print("Średnia długość listy ze zmianą wyniku:")
     print(avarageLength)
     bestListLength = avarageLength
 
-    avarageLength = defeat/defeatIteration
+    if defeatIteration ==0:
+        avarageLength = 0
+    else:
+        avarageLength = defeat/defeatIteration
     print("Średnia długość lisy bez zmiany wyniku:")
     print(avarageLength)
 
