@@ -63,9 +63,8 @@ def averageListLength():
             elif temp>=endCost:
                 defeat += i
                 defeatIteration +=1
-    if sucessIterations == 0:
 
-    if sucessIterations ==0:
+    if sucessIterations == 0:
         avarageLength = iRange
     else:
         avarageLength = sucess/sucessIterations
