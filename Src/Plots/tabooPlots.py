@@ -9,6 +9,8 @@ from Src.tabuSearch import TabooSearch, two_opt, tabuInvert
 def listLengthPlot():
     xpoints = []
     ypoints = []
+    xpoints.append(0)
+    ypoints.append(startSolution)
     for i in range(1,11,2):
         ypoints.append(taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution, endCost=endCost, problem = problem, k=i, maxTime=10)[1])
         xpoints.append(i)
@@ -22,7 +24,8 @@ def listLengthPlot():
 def timeVsResult(maxTimeIteration):
     xpoints = []
     ypoints = []
-
+    xpoints.append(0)
+    ypoints.append(startSolution)
     ypoints.append(taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution,endCost=endCost, problem = problem, k=3, maxTime=maxTimeIteration)[1])
     temp = taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution,endCost=endCost, problem = problem, k=3, maxTime=maxTimeIteration)[0]
     sum = maxTimeIteration
