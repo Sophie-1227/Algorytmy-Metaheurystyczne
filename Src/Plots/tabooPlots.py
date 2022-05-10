@@ -45,8 +45,8 @@ def averageListLength():
     sucessIterations = 0
     defeat = 0
     defeatIteration = 0
-    iRange = 10
-    jRange = 30
+    iRange = 2
+    jRange = 3
     #totalIterations = jRange*iRange
     for i in range(1, iRange):
         for j in range(1, jRange):
@@ -63,6 +63,7 @@ def averageListLength():
             elif temp>=endCost:
                 defeat += i
                 defeatIteration +=1
+    if sucessIterations == 0:
 
     if sucessIterations ==0:
         avarageLength = iRange
@@ -95,19 +96,19 @@ def optimizedListLength(bestListLength):
     x7points.append(0)
     y3points.append(startSolution)
     x3points.append(0)
-    while ypoints[-1] != solution or suma>6000:
+    while ypoints[-1] != solution or suma>20:
         ypoints.append(taboo.basicSearch(neighbourFunction=tabuInvert, starting=ypoints[-1], endCost=endCost, problem=problem, k=bestListLength, maxTime=10)[1])
         suma += 10
         xpoints.append(suma)
     suma = 0
-    while y7points != solution or suma>6000:
+    while y7points != solution or suma>20:
         y7points.append(
             taboo.basicSearch(neighbourFunction=tabuInvert, starting=ypoints[-1], endCost=endCost, problem=problem,
                               k=problemLength, maxTime=10)[1])
         suma += 10
         xpoints.append(suma)
     suma = 0
-    while y7points != solution or suma>6000:
+    while y7points != solution or suma>20:
         y7points.append(
             taboo.basicSearch(neighbourFunction=tabuInvert, starting=ypoints[-1], endCost=endCost, problem=problem,
                               k=3, maxTime=10)[1])
@@ -125,9 +126,10 @@ if __name__ == '__main__':
     taboo = TabooSearch()
     problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
     solution = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.opt.tour')
-    problemLength = problem.diminsion
+    problemLength = problem.dimension
     NNAPath, NNACost = NNA(problem, 0)
     startSolution, endCost = two_opt(problem, NNAPath)
     #listLengthPlot()
     #timeVsResult(maxTimeIteration=15)
-    optimizedListLength(averageListLength())
+    temp = averageListLength()
+    optimizedListLength(temp)
