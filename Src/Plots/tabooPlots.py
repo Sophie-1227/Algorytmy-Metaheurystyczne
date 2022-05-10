@@ -95,7 +95,7 @@ def optimizedListLength(bestListLength):
     x7points.append(0)
     y3points.append(startSolution)
     x3points.append(0)
-    temp = startSolution
+    temp = startSolution.copy()
     while ypoints[-1] != localSolution or suma>20:
         ypoints.append(taboo.basicSearch(neighbourFunction=tabuInvert, starting=temp, endCost=ypoints[-1], problem=problem, k=bestListLength, maxTime=10)[1])
         temp = taboo.basicSearch(neighbourFunction=tabuInvert, starting=temp, endCost=ypoints[-2], problem=problem, k=bestListLength,
@@ -104,7 +104,7 @@ def optimizedListLength(bestListLength):
         xpoints.append(suma)
 
     suma = 0
-    temp = startSolution
+    temp = startSolution.copy()
     while y7points != localSolution or suma>20:
         y7points.append(
             taboo.basicSearch(neighbourFunction=tabuInvert, starting=temp, endCost=y7points[-1], problem=problem,
@@ -114,7 +114,7 @@ def optimizedListLength(bestListLength):
         suma += 10
         x7points.append(suma)
 
-    temp = startSolution
+    temp = startSolution.copy()
     suma = 0
     while y7points != localSolution or suma>20:
         y7points.append(
