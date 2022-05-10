@@ -74,8 +74,8 @@ class TabooSearch:
         endList = starting
         solution = endList.copy()
         lengthDeque = problem.dimension
-        k = int(k)
-        tabooList = deque([], k*lengthDeque) # <- struktura listy tabu deque
+        l = k*lengthDeque
+        tabooList = deque([], int(l)) # <- struktura listy tabu deque
         tabooList.append(solution)
         while time.time() - startTime < maxTime: # <- Warunek stopu = czas
             neighborEndList = np.array([])
