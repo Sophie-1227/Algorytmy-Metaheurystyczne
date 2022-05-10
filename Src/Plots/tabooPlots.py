@@ -95,19 +95,19 @@ def optimizedListLength(bestListLength):
     x7points.append(0)
     y3points.append(startSolution)
     x3points.append(0)
-    while ypoints[-1] != solution or suma>20:
+    while ypoints[-1] != localSolution or suma>20:
         ypoints.append(taboo.basicSearch(neighbourFunction=tabuInvert, starting=ypoints[-1], endCost=endCost, problem=problem, k=bestListLength, maxTime=10)[1])
         suma += 10
         xpoints.append(suma)
     suma = 0
-    while y7points != solution or suma>20:
+    while y7points != localSolution or suma>20:
         y7points.append(
             taboo.basicSearch(neighbourFunction=tabuInvert, starting=ypoints[-1], endCost=endCost, problem=problem,
                               k=problemLength, maxTime=10)[1])
         suma += 10
         xpoints.append(suma)
     suma = 0
-    while y7points != solution or suma>20:
+    while y7points != localSolution or suma>20:
         y7points.append(
             taboo.basicSearch(neighbourFunction=tabuInvert, starting=ypoints[-1], endCost=endCost, problem=problem,
                               k=3, maxTime=10)[1])
@@ -124,7 +124,7 @@ def optimizedListLength(bestListLength):
 if __name__ == '__main__':
     taboo = TabooSearch()
     problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
-    solution = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.opt.tour')
+    localSolution = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.opt.tour')
     problemLength = problem.dimension
     NNAPath, NNACost = NNA(problem, 0)
     startSolution, endCost = two_opt(problem, NNAPath)
