@@ -58,7 +58,7 @@ def averageListLength():
             if temp<endCost:
                 sucess += i
                 sucessIterations +=1
-            elif endCost == problem.trace_tours(solution.tours)[0]:
+            elif endCost == problem.trace_tours(localSolution.tours)[0]:
                 continue
             elif temp>=endCost:
                 defeat += i
