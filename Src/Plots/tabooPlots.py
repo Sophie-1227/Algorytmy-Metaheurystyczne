@@ -48,8 +48,8 @@ def averageListLength():
     sucessIterations = 0
     defeat = 0
     defeatIteration = 0
-    iRange = 2
-    jRange = 3
+    iRange = 20
+    jRange = 30
     #totalIterations = jRange*iRange
     for i in range(1, iRange):
         for j in range(1, jRange):
