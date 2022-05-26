@@ -10,8 +10,8 @@ def listLengthPlot():
     xpoints = []
     ypoints = []
     xpoints.append(0)
-    ypoints.append(startSolution)
-    for i in range(1,11,2):
+    ypoints.append(endCost)
+    for i in range(1,15,2):
         ypoints.append(taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution, endCost=endCost, problem = problem, k=i, maxTime=10)[1])
         xpoints.append(i)
 
@@ -25,7 +25,7 @@ def timeVsResult(maxTimeIteration):
     xpoints = []
     ypoints = []
     xpoints.append(0)
-    ypoints.append(startSolution)
+    ypoints.append(endCost)
     ypoints.append(taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution,endCost=endCost, problem = problem, k=3, maxTime=maxTimeIteration)[1])
     temp = taboo.basicSearch(neighbourFunction = tabuInvert, starting = startSolution,endCost=endCost, problem = problem, k=3, maxTime=maxTimeIteration)[0]
     sum = maxTimeIteration
@@ -54,9 +54,6 @@ def averageListLength():
     for i in range(1, iRange):
         for j in range(1, jRange):
             startSolution, endCost = two_opt(problem, NNAPath)
-            #startSolution = list(problem.get_nodes())
-            #np.random.shuffle(startSolution)
-            #endCost = problem.trace_tours([startSolution])[0]
             temp = taboo.basicSearch(neighbourFunction=tabuInvert, starting=startSolution, endCost=endCost, problem=problem, k=i, maxTime=10)[1]
             if temp<endCost:
                 sucess += i
@@ -93,6 +90,7 @@ def optimizedListLength(bestListLength):
     y3points = []
     x3points = []
     suma = 0
+
     ypoints.append(startSolution)
     xpoints.append(0)
     y7points.append(startSolution)
@@ -100,8 +98,8 @@ def optimizedListLength(bestListLength):
     y3points.append(startSolution)
     x3points.append(0)
     temp = startSolution.copy()
-    while ypoints[-1] != localSolution or suma>20:
-        ypoints.append(taboo.basicSearch(neighbourFunction=tabuInvert, starting=temp, endCost=ypoints[-1], problem=problem, k=bestListLength, maxTime=10)[1])
+    while ypoints[-1] != localSolution or suma > 20:
+        ypoints.append(taboo.basicSearch(neighbourFunction=tabuInvert, starting=temp, ypoints=endCost[-1], problem=problem, k=bestListLength, maxTime=10)[1])
         temp = taboo.basicSearch(neighbourFunction=tabuInvert, starting=temp, endCost=ypoints[-2], problem=problem, k=bestListLength, maxTime=10)[0]
         suma += 10
         xpoints.append(suma)
@@ -137,12 +135,13 @@ def optimizedListLength(bestListLength):
 
 if __name__ == '__main__':
     taboo = TabooSearch()
-    problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
-    localSolution = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.opt.tour')
+    problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/berlin52/berlin52.tsp')
+    localSolution = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/berlin52/berlin52.opt.tour')
     problemLength = problem.dimension
     NNAPath, NNACost = NNA(problem, 0)
     startSolution, endCost = two_opt(problem, NNAPath)
-    #listLengthPlot()
-    #timeVsResult(maxTimeIteration=15)
-    temp_v2 = averageListLength()
-    optimizedListLength(temp_v2)
+    listLengthPlot()
+    timeVsResult(maxTimeIteration=12)
+    #temp_v2 = averageListLength()
+    #print(temp_v2)
+    #optimizedListLength(temp_v2)
