@@ -21,6 +21,39 @@ def getFitnes(population_set, problem, n_population):
 def selection(population_set, fitnes_list):
     total_fitnes = fitnes_list.sum()
 
-    a = np.random.choice(list(len(population_set))), len(population_set)
-    b = np.random.choice(list(len(population_set))), len(population_set)
+    a = np.random.choice(list(range(len(population_set))), len(population_set), replace = True)
+    b = np.random.choice(list(range(len(population_set))), len(population_set), replace = True)
 
+    a = population_set[a]
+    b = population_set[b]
+
+    return np.array([a,b])
+
+def pairsCrossover(a, b):
+    offspring = a[0:5]
+    for node in b:
+        if not node in offspring:
+            offspring = np.concatenate(offspring,[node])
+    return offspring
+
+def matePairs(progenitor_list):
+    new_set = []
+    for i in range(progenitor_list.shape[1]):
+        a, b = progenitor_list[0][i], progenitor_list[1][i]
+        offspring = pairsCrossover(a, b)
+        new_set.append(offspring)
+    return new_set
+
+def mutateOffspring(offspring, problem):
+    for i in range(int((problem.get_nodes)*mutation_rate)):
+        a = np.random.randint(0, problem.get_nodes)
+        b = np.random.randint(0, problem.get_nodes)
+
+        offspring[a], offspring[b] = offspring[b], offspring[a]
+    return offspring
+
+def mutatePopulation(new_set, problem):
+    mutated = []
+    for ofspring in new_set:
+        mutated.append(mutateOffspring(ofspring, problem))
+    return mutated
