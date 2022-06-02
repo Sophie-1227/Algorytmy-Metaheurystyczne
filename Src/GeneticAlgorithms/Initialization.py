@@ -18,6 +18,7 @@ set = firstPopulation(problem.get_nodes(), populations_number)
 set
 
 
+
 def getFitnes(set, problem):
     fitnes_list = list(np.zeros(populations_number))
     for i in range(populations_number):
