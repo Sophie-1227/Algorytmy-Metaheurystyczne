@@ -4,7 +4,7 @@ import tsplib95
 problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/berlin52/berlin52.tsp')
 mutation_rate = 0.2
 dimension = problem.dimension
-populations_number = 1000
+populations_number = 100
 
 def firstPopulation(lista, populations_number):
     set = []
@@ -28,7 +28,7 @@ fitnes_list = getFitnes(set, problem)
 fitnes_list
 
 def selection(set, fitnes_list):
-    total_fitnes = list(fitnes_list).sum()
+    total_fitnes = fitnes_list.sum()
     prob_list = fitnes_list/total_fitnes
 
     a = np.random.choice(list(range(len(set))), len(set), p=prob_list, replace = True)
@@ -81,7 +81,7 @@ mutated
 
 if __name__ == '__main__':
     best = [-1, np.inf, np.array([])]
-    for k in range(100000):
+    for k in range(1000):
         if k%100 == 0:
             print(k, fitnes_list.min(), fitnes_list.mean())
             fitnes_list = getFitnes(mutated,problem)
