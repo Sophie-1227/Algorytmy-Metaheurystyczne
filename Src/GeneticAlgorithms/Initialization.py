@@ -22,6 +22,7 @@ set
 def getFitnes(set, problem):
     fitnes_list = list(np.zeros(populations_number))
     for i in range(populations_number):
+        print(set[i])
         fitnes_list.append(problem.trace_tours(set[i]))
     return fitnes_list
 
