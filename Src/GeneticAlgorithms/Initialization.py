@@ -14,6 +14,8 @@ def firstPopulation(lista, populations_number):
     return np.array(set)
 
 set = firstPopulation(problem.get_nodes, populations_number)
+set
+
 
 def getFitnes(set, problem):
     fitnes_list = np.zeros(populations_number)
@@ -22,6 +24,7 @@ def getFitnes(set, problem):
     return fitnes_list
 
 fitnes_list = getFitnes(set, problem)
+fitnes_list
 
 def selection(set, fitnes_list):
     total_fitnes = fitnes_list.sum()
@@ -36,6 +39,7 @@ def selection(set, fitnes_list):
     return np.array([a,b])
 
 progenitor_list = selection(set, fitnes_list)
+progenitor_list
 
 def createOffspring(p1, p2):
     offspring = p1[0:5]
@@ -54,6 +58,7 @@ def createPopulationSet(progenitor_list):
     return new_set
 
 new_set = createPopulationSet(progenitor_list)
+new_set
 
 def mutateOffspring(offspring):
     for i in range(int(dimension*mutation_rate)):
@@ -70,6 +75,7 @@ def mutatePopulation(new_set):
     return mutated
 
 mutated = mutatePopulation(new_set)
+mutated
 
 if __name__ == '__main__':
     best = [-1, np.inf, np.array([])]
