@@ -28,7 +28,7 @@ fitnes_list = getFitnes(set, problem)
 fitnes_list
 
 def selection(set, fitnes_list):
-    total_fitnes = fitnes_list.sum()
+    total_fitnes = list(fitnes_list).sum()
     prob_list = fitnes_list/total_fitnes
 
     a = np.random.choice(list(range(len(set))), len(set), p=prob_list, replace = True)
