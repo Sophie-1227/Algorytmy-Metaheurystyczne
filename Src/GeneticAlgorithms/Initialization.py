@@ -37,6 +37,7 @@ def selection(set, fitnes_list):
     a = set[a]
     b = set[b]
 
+
     return np.array([a,b])
 
 progenitor_list = selection(set, fitnes_list)
