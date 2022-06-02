@@ -71,22 +71,23 @@ def mutatePopulation(new_set):
 
 mutated = mutatePopulation(new_set)
 
-best = [-1, np.inf, np.array([])]
-for k in range(100000):
-    if k%100 == 0:
-        print(k, fitnes_list.min(), fitnes_list.mean())
-        fitnes_list = getFitnes(mutated,problem)
+if __name__ == '__main__':
+    best = [-1, np.inf, np.array([])]
+    for k in range(100000):
+        if k%100 == 0:
+            print(k, fitnes_list.min(), fitnes_list.mean())
+            fitnes_list = getFitnes(mutated,problem)
 
-    if fitnes_list.min() < best[1]:
-        best[0] = k
-        best[1] = fitnes_list.min()
-        best[2] = np.array(mutated)[fitnes_list.min() == fitnes_list]
+        if fitnes_list.min() < best[1]:
+            best[0] = k
+            best[1] = fitnes_list.min()
+            best[2] = np.array(mutated)[fitnes_list.min() == fitnes_list]
 
-    progenitor_list = selection(set, fitnes_list)
-    new_set = createPopulationSet(progenitor_list)
-    mutated = mutatePopulation(new_set)
+        progenitor_list = selection(set, fitnes_list)
+        new_set = createPopulationSet(progenitor_list)
+        mutated = mutatePopulation(new_set)
 
-print(best)
+    print(best)
 
 
 """
