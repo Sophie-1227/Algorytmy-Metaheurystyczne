@@ -9,11 +9,11 @@ populations_number = 1000
 def firstPopulation(lista, populations_number):
     set = []
     for i in range(populations_number):
-        list_i = lista[np.random.shuffle(list(problem.get_nodes), dimension, replace = False)]
+        list_i = lista[np.random.shuffle(list(problem.get_nodes()), dimension, replace = False)]
         set.append(list_i)
     return np.array(set)
 
-set = firstPopulation(problem.get_nodes, populations_number)
+set = firstPopulation(problem.get_nodes(), populations_number)
 set
 
 
