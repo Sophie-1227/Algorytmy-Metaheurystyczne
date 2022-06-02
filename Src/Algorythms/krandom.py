@@ -1,6 +1,9 @@
 import numpy as np
 
 #lepsza metoda tego na dole
+import tsplib95
+
+
 def krandom(problem, k):
     if k < 1:
         return
@@ -10,6 +13,7 @@ def krandom(problem, k):
     for _ in range(k):
         curTour = list(problem.get_nodes())
         np.random.shuffle(curTour)
+        print(curTour)
         curCost = problem.trace_tours([curTour])[0]
         if cost > curCost:
             cost = curCost
@@ -19,6 +23,8 @@ def krandom(problem, k):
     #print(cost)
     return tour, cost
 
+if __name__ == '__main__':
+    problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
 
 """
 #implementacja algorytmu k-random

@@ -9,21 +9,22 @@ populations_number = 1000
 def firstPopulation(lista, populations_number):
     set = []
     for i in range(populations_number):
+        lista = list(lista)
         np.random.shuffle(list(lista))
         set.append(lista)
 
     return np.array(set)
 
 set = firstPopulation(problem.get_nodes(), populations_number)
-set
-
 
 
 def getFitnes(set, problem):
-    fitnes_list = list(np.zeros(populations_number))
-    for i in range(populations_number):
-        print(set[i])
-        fitnes_list.append(problem.trace_tours(set[i]))
+    fitnes_list = []
+    for i in set:
+        i = list(i)
+        print(i)
+        x = problem.trace_tours(i)
+        fitnes_list.append(x)
     return fitnes_list
 
 fitnes_list = getFitnes(set, problem)
