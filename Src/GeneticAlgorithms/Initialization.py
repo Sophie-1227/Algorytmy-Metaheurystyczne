@@ -5,7 +5,7 @@ import statistics
 problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
 mutation_rate = 0.7
 dimension = problem.dimension
-populations_number = 100
+populations_number = 50
 
 
 def firstPopulation(lista, populations_number):
@@ -23,7 +23,11 @@ def getFitnes(set, problem):
     for i in set:
         c = i[:]
         x = problem.trace_tours([c])
-        fitnes_list.append(x)
+        fitnes_list.append(x[0])
+    m = max(fitnes_list)
+
+    for i in range(len(fitnes_list)):
+        fitnes_list[i] = m - fitnes_list[i]
     return fitnes_list
 
 
@@ -60,15 +64,15 @@ def createOffspring(p1, p2):
     used = [False for _ in range(len(p1))]
     for i in range(piv1, piv2):
         offspring[i] = p1[i]
-        used[p1[i] - 1] = True
+        used[p1[i]-1] = True
     k = 0
     for i in range(0, piv1):
-        while used[p2[k] - 1]:
+        while used[p2[k]-1]:
             k += 1
         offspring[i] = p2[k]
-        used[p2[k] - 1] = True
+        used[p2[k]-1] = True
     for i in range(piv2, len(p1)):
-        while used[p2[k] - 1]:
+        while used[p2[k]-1]:
             k += 1
         offspring[i] = p2[k]
         used[p2[k] - 1] = True
@@ -84,7 +88,7 @@ def createPopulationSet(a, b):
 
 
 def mutateOffspring(offspring):
-    for _ in range(np.random.randint(1, 10)):
+    for _ in range(np.random.randint(0, 10)):
         x = np.random.randint(0, dimension)
         y = np.random.randint(0, dimension)
 
@@ -105,55 +109,16 @@ def mutatePopulation(new_set):
 if __name__ == '__main__':
 
     best = np.inf
-    # ilosc instancji
-    for k in range(1000):
-        set = firstPopulation(problem.get_nodes(), populations_number)
-        fitnes_list = getFitnes(set, problem)
-        fitnes_list = sum(fitnes_list, [])
-        progenitor_list = selection(set, fitnes_list)
-        new_set = createPopulationSet(progenitor_list)
-        mutated = mutatePopulation(new_set)
-        # sprawdzenie najlepszego ze 100 wykonan
-        if k % 100 == 0 and k != 0:
-            print(k, min(fitnes_list), statistics.mean(fitnes_list))
-            fitnes_list = getFitnes(mutated, problem)
-            fitnes_list = sum(fitnes_list, [])
-
-        if min(fitnes_list) < best:
-            best = min(fitnes_list)
-
-        # tworzy nowy set danych
-    progenitor_list = selection(set, fitnes_list)
-    new_set = createPopulationSet(progenitor_list)
-    mutated = mutatePopulation(new_set)
-
-    print(best)
-
-
-"""
-
-if __name__ == '__main__':
-
-    best = np.inf
     set = firstPopulation(problem.get_nodes(), populations_number)
-    # ilosc instancji
-    for k in range(1000):
-        fitnes_list = getFitnes(set, problem)
-        fitnes_list = sum(fitnes_list, [])
-        progenitor_list = selection(set, fitnes_list)
-        new_set = createPopulationSet(progenitor_list)
-        mutated = mutatePopulation(new_set)
-        # sprawdzenie najlepszego ze 100 wykonan
-        if k % 100 == 0 and k != 0:
-            print(k, min(fitnes_list), statistics.mean(fitnes_list))
-            fitnes_list = getFitnes(mutated, problem)
-            fitnes_list = sum(fitnes_list, [])
-
-        if min(fitnes_list) < best:
-            best = min(fitnes_list)
-            
-        set = mutated
-
+    print(set)
+    for k in range(80000):
+        f = getFitnes(set, problem)
+        a, b = selection(set, f)
+        set = createPopulationSet(a, b)
+        set = mutatePopulation(set)
+        xd = min(problem.trace_tours(set))
+        if xd < best:
+            best = xd
+        if k % 100 == 0:
+            print(best)
     print(best)
-
-"""
