@@ -18,8 +18,6 @@ def firstPopulation(lista, populations_number):
         set.append(lista)
     return np.array(set)
 
-set = firstPopulation(problem.get_nodes(), populations_number)
-
 
 def getFitnes(set, problem):
     fitnes_list = []
@@ -28,10 +26,6 @@ def getFitnes(set, problem):
         x = problem.trace_tours([c])
         fitnes_list.append(x)
     return fitnes_list
-
-fitnes_list = getFitnes(set, problem)
-fitnes_list = sum(fitnes_list,[])
-
 
 def selection(set, fitnes_list):
     prob_list = []
@@ -49,7 +43,7 @@ def selection(set, fitnes_list):
 
     return np.array([a,b])
 # lista przodkow
-progenitor_list = selection(set, fitnes_list)
+
 
 def createOffspring(p1, p2):
     p1 = list(p1)
@@ -69,8 +63,7 @@ def createPopulationSet(progenitor_list):
         new_set.append(offspring)
     return new_set
 
-new_set = createPopulationSet(progenitor_list)
-new_set
+
 
 def mutateOffspring(offspring):
     for i in range(int(dimension*mutation_rate)):
@@ -86,9 +79,14 @@ def mutatePopulation(new_set):
         mutated.append(mutateOffspring(offspring))
     return mutated
 
-mutated = mutatePopulation(new_set)
 
 if __name__ == '__main__':
+    set = firstPopulation(problem.get_nodes(), populations_number)
+    fitnes_list = getFitnes(set, problem)
+    fitnes_list = sum(fitnes_list,[])
+    progenitor_list = selection(set, fitnes_list)
+    new_set = createPopulationSet(progenitor_list)
+    mutated = mutatePopulation(new_set)
     best = np.inf
     # ilosc instancji
     for k in range(1000):
