@@ -81,15 +81,16 @@ def mutatePopulation(new_set):
 
 
 if __name__ == '__main__':
-    set = firstPopulation(problem.get_nodes(), populations_number)
-    fitnes_list = getFitnes(set, problem)
-    fitnes_list = sum(fitnes_list,[])
-    progenitor_list = selection(set, fitnes_list)
-    new_set = createPopulationSet(progenitor_list)
-    mutated = mutatePopulation(new_set)
+
     best = np.inf
     # ilosc instancji
     for k in range(1000):
+        set = firstPopulation(problem.get_nodes(), populations_number)
+        fitnes_list = getFitnes(set, problem)
+        fitnes_list = sum(fitnes_list,[])
+        progenitor_list = selection(set, fitnes_list)
+        new_set = createPopulationSet(progenitor_list)
+        mutated = mutatePopulation(new_set)
         # sprawdzenie najlepszego ze 100 wykonan
         if k%100 == 0 and k != 0:
             print(k, min(fitnes_list), statistics.mean(fitnes_list))
