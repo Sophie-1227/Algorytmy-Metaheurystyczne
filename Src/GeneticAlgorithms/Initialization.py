@@ -10,9 +10,8 @@ def firstPopulation(lista, populations_number):
     set = []
     for i in range(populations_number):
         lista = list(lista)
-        np.random.shuffle(list(lista))
+        np.random.shuffle(lista)
         set.append(lista)
-
     return np.array(set)
 
 set = firstPopulation(problem.get_nodes(), populations_number)
@@ -40,7 +39,6 @@ def selection(set, fitnes_list):
 
     a = set[a]
     b = set[b]
-
 
     return np.array([a,b])
 # lista przodkow
