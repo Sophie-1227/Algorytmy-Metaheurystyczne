@@ -89,15 +89,15 @@ mutated = mutatePopulation(new_set)
 mutated
 
 if __name__ == '__main__':
-    best = [np.inf]
+    best = np.inf
     for k in range(1000):
         if k%100 == 0:
             print(k, min(fitnes_list), statistics.mean(fitnes_list))
             fitnes_list = getFitnes(mutated,problem)
             fitnes_list = sum(fitnes_list, [])
 
-        if min(fitnes_list) < best[0]:
-            best[0] = min(fitnes_list)
+        if min(fitnes_list) < best:
+            best = min(fitnes_list)
         progenitor_list = selection(set, fitnes_list)
         new_set = createPopulationSet(progenitor_list)
         mutated = mutatePopulation(new_set)
