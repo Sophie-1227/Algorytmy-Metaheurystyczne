@@ -89,7 +89,7 @@ mutated = mutatePopulation(new_set)
 mutated
 
 if __name__ == '__main__':
-    best = [-1, np.inf, np.array([])]
+    best = [np.inf]
     for k in range(1000):
         if k%100 == 0:
             print(k, min(fitnes_list), statistics.mean(fitnes_list))
