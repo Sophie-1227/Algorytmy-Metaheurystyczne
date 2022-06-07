@@ -54,7 +54,6 @@ def createOffspring(p1, p2):
     p1 = list(p1)
     p2 = list(p2)
     offspring = p1[0:5]
-
     for node in p2:
         if not node in offspring:
             offspring.append(node)
@@ -98,9 +97,8 @@ if __name__ == '__main__':
             fitnes_list = getFitnes(mutated,problem)
             fitnes_list = sum(fitnes_list, [])
 
-        if min(fitnes_list) < best[1]:
-            best[0] = k
-            best[1] = min(fitnes_list)
+        if min(fitnes_list) < best:
+            best = min(fitnes_list)
         progenitor_list = selection(set, fitnes_list)
         new_set = createPopulationSet(progenitor_list)
         mutated = mutatePopulation(new_set)
