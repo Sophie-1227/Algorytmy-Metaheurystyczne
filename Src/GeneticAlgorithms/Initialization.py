@@ -21,8 +21,6 @@ def getFitnes(set, problem):
     fitnes_list = []
     for i in set:
         c = list(i)
-
-        print(c)
         x = problem.trace_tours([c])
         fitnes_list.append(x)
     return fitnes_list
@@ -30,9 +28,16 @@ def getFitnes(set, problem):
 fitnes_list = getFitnes(set, problem)
 fitnes_list
 
+
 def selection(set, fitnes_list):
-    total_fitnes = sum(fitnes_list)
-    prob_list = fitnes_list/total_fitnes
+    prob_list = []
+    total_fitnes = sum(fitnes_list,[])
+    total_fitnes = sum(total_fitnes)
+    fitnes_list = sum(fitnes_list,[])
+    print(fitnes_list)
+    for i in fitnes_list:
+        n = i/total_fitnes
+        prob_list.append(n)
 
     a = np.random.choice(list(range(len(set))), len(set), p=prob_list, replace = True)
     b = np.random.choice(list(range(len(set))), len(set), p=prob_list, replace = True)
