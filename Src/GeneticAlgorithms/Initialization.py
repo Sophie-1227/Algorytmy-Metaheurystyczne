@@ -7,7 +7,7 @@ import statistics
 problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/berlin52/berlin52.tsp')
 mutation_rate = 0.2
 dimension = problem.dimension
-populations_number = 1000
+populations_number = 100
 
 def firstPopulation(lista, populations_number):
     set = []
