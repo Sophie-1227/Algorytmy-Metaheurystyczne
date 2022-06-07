@@ -2,7 +2,6 @@ import numpy as np
 import tsplib95
 import statistics
 
-from Src.Algorythms.two_opt import two_opt
 
 problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
 mutation_rate = 0.3
@@ -12,9 +11,9 @@ populations_number = 100
 def firstPopulation(lista, populations_number):
     set = []
     for i in range(populations_number):
-        #lista = list(lista)
-        lista = two_opt(problem)[0]
-        #np.random.shuffle(lista)
+        lista = list(lista)
+        #lista = two_opt(problem)[0]
+        np.random.shuffle(lista)
         set.append(lista)
     return np.array(set)
 
