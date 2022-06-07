@@ -13,7 +13,7 @@ def krandom(problem, k):
     for _ in range(k):
         curTour = list(problem.get_nodes())
         np.random.shuffle(curTour)
-        print(curTour)
+        #print(curTour)
         curCost = problem.trace_tours([curTour])[0]
         if cost > curCost:
             cost = curCost

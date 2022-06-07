@@ -2,18 +2,19 @@ import numpy as np
 import tsplib95
 import statistics
 
+from Src.Algorythms.two_opt import two_opt
 
-
-problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/berlin52/berlin52.tsp')
-mutation_rate = 0.2
+problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
+mutation_rate = 0.3
 dimension = problem.dimension
 populations_number = 100
 
 def firstPopulation(lista, populations_number):
     set = []
     for i in range(populations_number):
-        lista = list(lista)
-        np.random.shuffle(lista)
+        #lista = list(lista)
+        lista = two_opt(problem)[0]
+        #np.random.shuffle(lista)
         set.append(lista)
     return np.array(set)
 
@@ -86,11 +87,12 @@ def mutatePopulation(new_set):
     return mutated
 
 mutated = mutatePopulation(new_set)
-mutated
 
 if __name__ == '__main__':
     best = np.inf
+    # ilosc instancji
     for k in range(1000):
+        # sprawdzenie najlepszego ze 100 wykonan
         if k%100 == 0:
             print(k, min(fitnes_list), statistics.mean(fitnes_list))
             fitnes_list = getFitnes(mutated,problem)
@@ -98,6 +100,7 @@ if __name__ == '__main__':
 
         if min(fitnes_list) < best:
             best = min(fitnes_list)
+        # tworzy nowy set danych
         progenitor_list = selection(set, fitnes_list)
         new_set = createPopulationSet(progenitor_list)
         mutated = mutatePopulation(new_set)
