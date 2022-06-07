@@ -60,15 +60,15 @@ def createOffspring(p1, p2):
     used = [False for _ in range(len(p1))]
     for i in range(piv1, piv2):
         offspring[i] = p1[i]
-        used[p1[i]-1] = True
+        used[p1[i] - 1] = True
     k = 0
     for i in range(0, piv1):
-        while used[p2[k]-1]:
+        while used[p2[k] - 1]:
             k += 1
         offspring[i] = p2[k]
-        used[p2[k]-1] = True
+        used[p2[k] - 1] = True
     for i in range(piv2, len(p1)):
-        while used[p2[k]-1]:
+        while used[p2[k] - 1]:
             k += 1
         offspring[i] = p2[k]
         used[p2[k] - 1] = True
@@ -81,7 +81,6 @@ def createPopulationSet(a, b):
         offspring = createOffspring(a[i], b[i])
         new_set.append(offspring)
     return new_set
-
 
 
 def mutateOffspring(offspring):
@@ -110,14 +109,14 @@ if __name__ == '__main__':
     for k in range(1000):
         set = firstPopulation(problem.get_nodes(), populations_number)
         fitnes_list = getFitnes(set, problem)
-        fitnes_list = sum(fitnes_list,[])
+        fitnes_list = sum(fitnes_list, [])
         progenitor_list = selection(set, fitnes_list)
         new_set = createPopulationSet(progenitor_list)
         mutated = mutatePopulation(new_set)
         # sprawdzenie najlepszego ze 100 wykonan
-        if k%100 == 0 and k != 0:
+        if k % 100 == 0 and k != 0:
             print(k, min(fitnes_list), statistics.mean(fitnes_list))
-            fitnes_list = getFitnes(mutated,problem)
+            fitnes_list = getFitnes(mutated, problem)
             fitnes_list = sum(fitnes_list, [])
 
         if min(fitnes_list) < best:
@@ -129,3 +128,32 @@ if __name__ == '__main__':
     mutated = mutatePopulation(new_set)
 
     print(best)
+
+
+"""
+
+if __name__ == '__main__':
+
+    best = np.inf
+    set = firstPopulation(problem.get_nodes(), populations_number)
+    # ilosc instancji
+    for k in range(1000):
+        fitnes_list = getFitnes(set, problem)
+        fitnes_list = sum(fitnes_list, [])
+        progenitor_list = selection(set, fitnes_list)
+        new_set = createPopulationSet(progenitor_list)
+        mutated = mutatePopulation(new_set)
+        # sprawdzenie najlepszego ze 100 wykonan
+        if k % 100 == 0 and k != 0:
+            print(k, min(fitnes_list), statistics.mean(fitnes_list))
+            fitnes_list = getFitnes(mutated, problem)
+            fitnes_list = sum(fitnes_list, [])
+
+        if min(fitnes_list) < best:
+            best = min(fitnes_list)
+            
+        set = mutated
+
+    print(best)
+
+"""
