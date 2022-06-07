@@ -53,7 +53,7 @@ progenitor_list = selection(set, fitnes_list)
 def createOffspring(p1, p2):
     p1 = list(p1)
     p2 = list(p2)
-    offspring = p1[0:5]
+    offspring = p1[0:26]
     for node in p2:
         if not node in offspring:
             offspring.append(node)
