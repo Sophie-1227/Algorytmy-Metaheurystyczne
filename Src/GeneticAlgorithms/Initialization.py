@@ -93,7 +93,7 @@ if __name__ == '__main__':
     # ilosc instancji
     for k in range(1000):
         # sprawdzenie najlepszego ze 100 wykonan
-        if k%100 == 0:
+        if k%100 == 0 and k != 0:
             print(k, min(fitnes_list), statistics.mean(fitnes_list))
             fitnes_list = getFitnes(mutated,problem)
             fitnes_list = sum(fitnes_list, [])
