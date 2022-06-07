@@ -1,5 +1,8 @@
 import numpy as np
 import tsplib95
+import statistics
+
+
 
 problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/berlin52/berlin52.tsp')
 mutation_rate = 0.2
@@ -26,15 +29,13 @@ def getFitnes(set, problem):
     return fitnes_list
 
 fitnes_list = getFitnes(set, problem)
-fitnes_list
+fitnes_list = sum(fitnes_list,[])
 
 
 def selection(set, fitnes_list):
     prob_list = []
-    total_fitnes = sum(fitnes_list,[])
-    total_fitnes = sum(total_fitnes)
-    fitnes_list = sum(fitnes_list,[])
-    print(fitnes_list)
+
+    total_fitnes = sum(fitnes_list)
     for i in fitnes_list:
         n = i/total_fitnes
         prob_list.append(n)
@@ -50,11 +51,14 @@ def selection(set, fitnes_list):
 progenitor_list = selection(set, fitnes_list)
 
 def createOffspring(p1, p2):
+    p1 = list(p1)
+    p2 = list(p2)
     offspring = p1[0:5]
 
     for node in p2:
         if not node in offspring:
-            offspring = np.concatenate(offspring, [node])
+            offspring.append(node)
+            #offspring = np.concatenate(offspring, [node])
     return offspring
 
 def createPopulationSet(progenitor_list):
@@ -87,16 +91,16 @@ mutated
 
 if __name__ == '__main__':
     best = [-1, np.inf, np.array([])]
-    for k in range(100000):
+    print(fitnes_list)
+    for k in range(1000):
         if k%100 == 0:
-            print(k, fitnes_list.min(), fitnes_list.mean())
+            print(k, min(fitnes_list), statistics.mean(fitnes_list))
             fitnes_list = getFitnes(mutated,problem)
+            fitnes_list = sum(fitnes_list, [])
 
-        if fitnes_list.min() < best[1]:
+        if min(fitnes_list) < best[1]:
             best[0] = k
-            best[1] = fitnes_list.min()
-            best[2] = np.array(mutated)[fitnes_list.min() == fitnes_list]
-
+            best[1] = min(fitnes_list)
         progenitor_list = selection(set, fitnes_list)
         new_set = createPopulationSet(progenitor_list)
         mutated = mutatePopulation(new_set)
