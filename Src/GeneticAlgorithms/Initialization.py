@@ -21,9 +21,10 @@ set = firstPopulation(problem.get_nodes(), populations_number)
 def getFitnes(set, problem):
     fitnes_list = []
     for i in set:
-        i = list(i)
-        print(i)
-        x = problem.trace_tours(i)
+        c = list(i)
+
+        print(c)
+        x = problem.trace_tours([c])
         fitnes_list.append(x)
     return fitnes_list
 
@@ -42,9 +43,8 @@ def selection(set, fitnes_list):
 
 
     return np.array([a,b])
-
+# lista przodkow
 progenitor_list = selection(set, fitnes_list)
-progenitor_list
 
 def createOffspring(p1, p2):
     offspring = p1[0:5]

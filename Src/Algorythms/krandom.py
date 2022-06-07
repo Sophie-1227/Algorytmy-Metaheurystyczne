@@ -25,7 +25,7 @@ def krandom(problem, k):
 
 if __name__ == '__main__':
     problem = tsplib95.load('/Users/grelewski/PycharmProjects/Metaheurystyka1/Data/bays29/bays29.tsp')
-
+    krandom(problem, k = 1)
 """
 #implementacja algorytmu k-random
 def k_method_solve(problem, k):
