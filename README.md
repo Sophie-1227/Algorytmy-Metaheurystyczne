@@ -20,9 +20,9 @@ We implemented algorithms such as:
 > Complexity: $O(n^2)$  
 
 - **2-OPT**  
-> It's a simple local search algorithm. Building the new route and calculating the distance of the new route can be  
-> a very expensive operation, usually $O(n)$ where n is the number of vertices in the route. This can sometimes be   
-> skipped by performing a $O(1)$ operation. Since a 2-opt operation involves removing 2 edges and adding 2 different  
+> It's a simple local search algorithm. Building the new route and calculating the distance of the new route can be
+> a very expensive operation, usually $O(n)$ where n is the number of vertices in the route. This can sometimes be 
+> skipped by performing a $O(1)$ operation. Since a 2-opt operation involves removing 2 edges and adding 2 different
 > edges we can subtract and add the distances of only those edges.  
 
 - **GA**  
