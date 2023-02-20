@@ -26,6 +26,6 @@ We implemented algorithms such as:
 > edges we can subtract and add the distances of only those edges.  
 
 - **GA**  
-> Genetic Algorithm for Traveling Salesman Problem with Modified Cycle Crossover Operator 
+> Genetic Algorithm for Traveling Salesman Problem with Modified Cycle Crossover Operator.  
 
-It was group project. We wrote it in pair.
+It was group project. We wrote it in pair. We did a lot of tests and charts. We were using tsplib and tests instances.
